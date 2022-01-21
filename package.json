@@ -1,14 +1,13 @@
 {
   "name": "@sta-podcast/website-helpers",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A collection of tools useful for making the Sense Think Act Podcast website.",
   "main": "dist/index.js",
   "scripts": {
     "test": "npm run build && jest dist/*",
     "build": "tsc",
     "lint": "eslint src --ext .ts,.js,.json --max-warnings 0",
-    "clean": "rm -rf dist",
-    "publish": "npm publish --access public"
+    "clean": "rm -rf dist"
   },
   "author": "Audrow Nash",
   "contributors": [
