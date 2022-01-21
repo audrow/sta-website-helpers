@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run build && jest dist/*",
     "build": "tsc",
-    "lint": "eslint src --ext .ts,.js,.json",
+    "lint": "eslint src --ext .ts,.js,.json --max-warnings 0",
     "clean": "rm -rf dist",
     "publish": "npm publish --access public"
   },

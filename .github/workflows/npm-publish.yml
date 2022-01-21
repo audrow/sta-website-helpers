@@ -3,7 +3,7 @@ on:
     types: [created]
 
 jobs:
-  build:
+  continuous-integration:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,9 +16,8 @@ jobs:
         run: npm run lint
       - name: Tests
         run: npm run test
-
   publish-npm:
-    needs: build
+    needs: continuous-integration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
