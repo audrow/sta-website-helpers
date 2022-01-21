@@ -1,5 +1,5 @@
 {
-  "name": "@sta/website-helpers",
+  "name": "@sta-podcast/website-helpers",
   "version": "0.0.1",
   "description": "A collection of tools useful for making the Sense Think Act Podcast website.",
   "main": "dist/index.js",
