@@ -4,7 +4,7 @@ TODO
 - [x] Setup Mergify and Dependabot
 - [x] Try locally installing this package and using it
 - [x] Plan what I want this to do
-- [ ] Establish types for podcast episode and podcast config
+- [x] Establish types for podcast episode and podcast config
 - [ ] Get information necessary for generating posts and RSS feed
   - [ ] Parse podcast YAML files
   - [ ] Infer mp3 size from URL
