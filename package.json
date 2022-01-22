@@ -18,18 +18,13 @@
     "test": "npm run build:cjs && jest dist/cjs/*"
   },
   "files": [
-    "dist"
+    "dist/*"
   ],
   "author": "Audrow Nash",
   "contributors": [
     "Audrow Nash <audrow@hey.com>"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/audrow/sta-website-helpers/blob/main/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/audrow/sta-website-helpers"
