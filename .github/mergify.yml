@@ -5,8 +5,7 @@ pull_request_rules:
         - or:
           - "#approved-reviews-by>=1"
           - author~=^dependabot(|-preview)\[bot\]$
-        - and:
-          - check-success=continuous-integration
+        - check-success=continuous-integration
     actions:
       merge:
         method: squash
