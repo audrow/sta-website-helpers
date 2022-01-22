@@ -2,23 +2,50 @@
   "name": "@sta-podcast/website-helpers",
   "version": "0.0.5",
   "description": "A collection of tools useful for making the Sense Think Act Podcast website.",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
+  "module": "dist/esm/index.js",
+  "source": "src/index.ts",
   "scripts": {
-    "test": "npm run build && jest dist/*",
-    "build": "tsc",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:esm": "tsc --project ./tsconfig.esm.json",
+    "build:tests": "tsc --project ./tsconfig.tests.json",
+    "build:types": "tsc --project ./tsconfig.types.json",
+    "clean": "rm -rf dist",
     "lint": "eslint src --ext .ts,.js,.json --max-warnings 0",
-    "clean": "rm -rf dist"
+    "prepare": "npm run build",
+    "test": "npm run build:cjs && jest dist/cjs/*"
   },
+  "files": [
+    "dist"
+  ],
   "author": "Audrow Nash",
   "contributors": [
     "Audrow Nash <audrow@hey.com>"
   ],
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/audrow/sta-website-helpers/blob/main/LICENSE"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/audrow/sta-website-helpers"
   },
+  "keywords": [
+    "podcast",
+    "rss",
+    "yaml",
+    "typescript",
+    "nodejs"
+  ],
   "homepage": "https://github.com/audrow/sta-website-helpers",
+  "bugs": {
+    "mail": "audrow@hey.com",
+    "url": "https://github.com/audrow/sta-website-helpers/issues"
+  },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
     "@types/jest": "^27.4.0",
