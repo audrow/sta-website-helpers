@@ -1,4 +1,4 @@
-export { sum } from './sum';
+export { getEpisodeSlugs } from './api';
 
 import type EpisodeYamlData from './types/EpisodeYamlData';
 import type EpisodeData from './types/EpisodeData';
