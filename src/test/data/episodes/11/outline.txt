@@ -1,0 +1,27 @@
+0:00:00 - Start
+0:00:51 - Introducing CBQ and Greenzie
+0:02:40 - Why go by initials?
+0:03:22 - Describing the Greenzie autonomous system
+0:08:51 - Working with mower manufacturers to up-fit their system
+0:15:22 - Software on autonomous system
+0:21:21 - Mapping the lawn
+0:28:03 - Handling poor GPS signal
+0:33:28 - Perception pipeline
+0:38:58 - Having a human use their mowers
+0:45:15 - Standards in the off-road space
+0:50:18 - The value of standards bodies
+0:55:00 - Depth cameras in the autonomous system
+0:58:37 - LIDAR and being venture backed
+1:02:24 - Replacing depth cameras with LIDAR? + Tesla and computer vision
+1:03:50 - Ruggedized computer
+1:06:36 - Microcontrollers, testing, and visualizing data
+1:12:03 - Deploying software updates
+1:17:33 - Safety
+1:20:57 - Testing for deployment + dogfooding
+1:24:54 - Training people to work with their autonomous system
+1:29:54 - Greenzie’s business model
+1:35:13 - Bootstrapping a startup versus venture capital
+1:39:23 - What CBQ learned from bootstrapping
+1:47:38 - Future of Greenzie
+1:51:09 - Advice to someone starting their career
+1:54:02 - Links and social media
