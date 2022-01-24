@@ -2,13 +2,11 @@ guests:
   - Brett Aldrich
 title: State Machines for Complex Robot Behavior
 description:
-  full: |
-    In this episode, Audrow Nash interviews Brett Aldrich, author of SMACC and CEO of Robosoft AI. Robosoft AI develops and maintains SMACC and SMACC2, which are event-driven, behavior state machine libraries for ROS 1 and ROS 2, respectively. Brett explains SMACC, its origins, other strategies for robot control such as behavior trees, speaks about the challenges of developing software for industry users and hobbists, and gives some advice for new roboticists.
-  short: Brett Aldrich is the CEO of Robosoft AI
-duration:
-  hours: 1
-  minutes: 51
-  seconds: 46
+  In this episode, Audrow Nash interviews Brett Aldrich, author of SMACC and CEO of Robosoft AI.
+  Robosoft AI develops and maintains SMACC and SMACC2, which are event-driven, behavior state machine libraries for ROS 1 and ROS 2, respectively.
+  Brett explains SMACC, its origins, other strategies for robot control such as behavior trees, speaks about the challenges of developing software for industry users and hobbists, and gives some advice for new roboticists.
+excerpt: Brett Aldrich is the CEO of Robosoft AI
+duration: "1:51:46"
 tags:
   - startup
   - software
@@ -21,11 +19,6 @@ links:
     url: https://github.com/robosoft-ai/SMACC2
   - name: SMACC blog
     url: https://smacc.dev/
-publicationDate: 2021-12-28
-filePaths:
-  mp3: episode.mp3
-  coverArt: cover.png
-  outline: outline.txt
-  transcriptText: transcript.txt
-youtube:
-  mainCode: 3ju1g6g51ss
+publishDate: 2021-12-28
+youtubeIds:
+  mainInterview: 3ju1g6g51ss

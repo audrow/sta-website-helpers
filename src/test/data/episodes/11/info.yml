@@ -5,10 +5,7 @@ description:
   full: |
     In this episode, Audrow Nash speaks to Charles Brian Quinn (aka, CBQ), CEO and a Co-Founder of Greenzie. Greenzie make an autonomous driving system for commercial lawn mowers. We talk about Greenzie's autonomous mowing system, how Greenzie has worked with manufacturers to up-fit their system into comercial mowers, how Greenzie does dog-fooding, safety and standards, and about CBQ's experiences bootstrapping and with venture capital.
   short: CBQ is the CEO and a Co-Founder of Greenzie.
-duration:
-  hours: 1
-  minutes: 55
-  seconds: 9
+duration: "1:51:46"
 tags:
   - startup
   - software
@@ -20,12 +17,7 @@ links:
     url: https://www.greenzie.com/
   - name: Greenzie's YouTube
     url: https://www.youtube.com/c/Greenzie
-publicationDate: 2022-01-11
-filePaths:
-  mp3: episode.mp3
-  coverArt: cover.png
-  transcriptText: transcript.txt
-  outline: outline.txt
+publishDate: 2022-01-11
 youtube:
   mainCode: pBWLSmoBj54
   clipTitles:

@@ -1,17 +1,20 @@
 import Link from './Link';
 
 type PodcastConfig = {
-  title: string;
-  subtitle: string;
+  name: string;
+  tagline: string;
   description: string;
   copyright: string;
   github: {
     organization: string;
     repository: string;
-  };
+  }
   owner: {
     name: string;
     email: string;
+  }
+  hosting: {
+    baseMp3Url: string;
   }
   itunes: {
     feedFile: string;
