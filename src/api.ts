@@ -3,16 +3,30 @@ import fs from 'fs';
 import { join, sep } from 'path';
 
 import type EpisodeYamlData from './types/EpisodeYamlData';
+import {
+  INFO_FILE_NAME,
+  TRANSCRIPT_FILE_NAME,
+  OUTLINE_FILE_NAME,
+} from './constants'
+
+export function getEpisodeBySlug(slug: string, episodesDirectory: string) {
+  const episodeNumber = getEpisodeNumberFromSlug(slug);
+  const episodeDirectory = join(episodesDirectory, episodeNumber.toString(), );
+
+  const infoFilePath = join(episodeDirectory, INFO_FILE_NAME);
+  const infoFileContents = fs.readFileSync(infoFilePath, 'utf8');
+  const info = YAML.parse(infoFileContents) as unknown as EpisodeYamlData;
+}
 
 export function getEpisodeSlugs(episodesDirectory: string): string[] {
-  const directories = fs.readdirSync(episodesDirectory)
-  if (directories.length === 0) {
+  const episodeDirectories = fs.readdirSync(episodesDirectory)
+  if (episodeDirectories.length === 0) {
     throw new Error(`No episodes found in ${episodesDirectory}`);
   }
-  const slugs = directories.map(directory => {
-    const episodeNumber = getEpisodeNumber(directory);
+  const slugs = episodeDirectories.map(episodeDirectory => {
+    const episodeNumber = getEpisodeNumberFromPath(episodeDirectory);
 
-    const infoFilePath = join(episodesDirectory, directory, 'info.yml');
+    const infoFilePath = join(episodesDirectory, episodeDirectory, INFO_FILE_NAME);
     const infoFileContents = fs.readFileSync(infoFilePath, 'utf8');
     const info = YAML.parse(infoFileContents) as unknown as EpisodeYamlData;
 
@@ -21,8 +35,20 @@ export function getEpisodeSlugs(episodesDirectory: string): string[] {
   return slugs
 }
 
-export function getEpisodeNumber(episodeDirectory: string) {
-  return parseInt(episodeDirectory.split(sep).slice(-1)[0])
+export function getEpisodeNumberFromSlug(slug: string) {
+  const out = parseInt(slug)
+  if (isNaN(out)) {
+    throw new Error(`Invalid episode slug: ${slug}`);
+  }
+  return out
+}
+
+export function getEpisodeNumberFromPath(episodeDirectory: string) {
+  const out = parseInt(episodeDirectory.split(sep).slice(-1)[0])
+  if (isNaN(out)) {
+    throw new Error(`Could not parse episode number from ${episodeDirectory}`)
+  }
+  return out
 }
 
 export function getEpisodeSlug(episodeNumber: number, guests: string[]): string {
@@ -45,3 +71,6 @@ export function getEpisodeSlug(episodeNumber: number, guests: string[]): string 
 
 const episodeDirectory = './src/test/data/episodes';
 console.log(getEpisodeSlugs(episodeDirectory));
+console.log(
+  parseInt('12-brett-aldrich-1')
+)

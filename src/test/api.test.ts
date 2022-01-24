@@ -1,6 +1,7 @@
 import {
   getEpisodeSlugs,
-  getEpisodeNumber,
+  getEpisodeNumberFromPath,
+  getEpisodeNumberFromSlug,
   getEpisodeSlug,
 } from "../api";
 
@@ -44,22 +45,43 @@ describe("getEpisodeSlug", () => {
   })
 })
 
-describe("getEpisodeNumber", () => {
+describe("getEpisodeNumberFromPath", () => {
   it("should return an episode number", () => {
-    expect(getEpisodeNumber("1")).toEqual(1);
-    expect(getEpisodeNumber("101")).toEqual(101);
+    expect(getEpisodeNumberFromPath("1")).toEqual(1);
+    expect(getEpisodeNumberFromPath("101")).toEqual(101);
 
-    expect(getEpisodeNumber("foo/1")).toEqual(1);
+    expect(getEpisodeNumberFromPath("foo/1")).toEqual(1);
 
-    expect(getEpisodeNumber("foo/bar/1")).toEqual(1);
-    expect(getEpisodeNumber("foo/bar/2")).toEqual(2);
-    expect(getEpisodeNumber("foo/bar/101")).toEqual(101);
+    expect(getEpisodeNumberFromPath("foo/bar/1")).toEqual(1);
+    expect(getEpisodeNumberFromPath("foo/bar/2")).toEqual(2);
+    expect(getEpisodeNumberFromPath("foo/bar/101")).toEqual(101);
   });
   it("should return NaN if no number is given", () => {
-    expect(getEpisodeNumber("")).toEqual(NaN);
-    expect(getEpisodeNumber("foo")).toEqual(NaN);
-    expect(getEpisodeNumber("foo/")).toEqual(NaN);
-    expect(getEpisodeNumber("foo/bar/")).toEqual(NaN);
-    expect(getEpisodeNumber("foo/bar/abc")).toEqual(NaN);
+    expect(() => getEpisodeNumberFromPath("")).toThrowError();
+    expect(() => getEpisodeNumberFromPath("foo")).toThrowError();
+    expect(() => getEpisodeNumberFromPath("foo/")).toThrowError();
+    expect(() => getEpisodeNumberFromPath("foo/bar/")).toThrowError();
+    expect(() => getEpisodeNumberFromPath("foo/bar/abc")).toThrowError();
+  })
+})
+
+describe("getEpisodeNumberFromSlug", () => {
+  it("should return an episode number", () => {
+    expect(getEpisodeNumberFromSlug("1")).toEqual(1);
+    expect(getEpisodeNumberFromSlug("1-foo")).toEqual(1);
+    expect(getEpisodeNumberFromSlug("1-foo-bar")).toEqual(1);
+    expect(getEpisodeNumberFromSlug("1-foo-bar-2")).toEqual(1);
+    expect(getEpisodeNumberFromSlug("10-foo-bar")).toEqual(10);
+    expect(getEpisodeNumberFromSlug("10-foo-bar")).toEqual(10);
+    expect(getEpisodeNumberFromSlug("103-foo-bar")).toEqual(103);
+  })
+
+  it("should throw an error on no number", () => {
+    expect(() => getEpisodeNumberFromSlug("")).toThrowError();
+    expect(() => getEpisodeNumberFromSlug(" ")).toThrowError();
+    expect(() => getEpisodeNumberFromSlug("foo")).toThrowError();
+    expect(() => getEpisodeNumberFromSlug("foo-1")).toThrowError();
+    expect(() => getEpisodeNumberFromSlug("foo-bar")).toThrowError();
+    expect(() => getEpisodeNumberFromSlug("foo-bar-1")).toThrowError();
   })
 })
