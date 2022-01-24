@@ -6,14 +6,14 @@ TODO
 - [x] Plan what I want this to do
 - [x] Establish types for podcast episode and podcast config
 - [ ] Get information necessary for generating posts and RSS feed
-  - [ ] Parse podcast YAML files
+  - [x] Parse podcast TS files
   - [ ] Infer mp3 size from URL
   - [ ] Check uniqueness of post slugs
   - [ ] Check that episode title meets certain constraints (not over 100 chars)
   - [ ] Markup the transcript from SRT to HTML
   - [ ] Include the timing outline
 - [ ] Access episodes and their fields
-  - [ ] `getEpisodeSlugs(): string[]`
+  - [x] `getEpisodeSlugs(): string[]`
   - [ ] `getEpisodeBySlug(slug: string, fields: string[])`
   - [ ] `getAllEpisodes(fields: string[])`
 - [ ] Upload and title correctly the mp3
