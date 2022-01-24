@@ -1,19 +1,21 @@
 import Link from './Link'
+import Duration from './Duration'
+import YoutubeVideo from './YoutubeVideo'
 
 type EpisodeYamlData = {
-  guests: string[];
+  guests: string | string[];
   title: string;
   description: string;
   excerpt: string;
-  publicationDate: string;
+  publishDate: Date;
   tags: string[];
   links: Link[];
-  duration: string;
+  duration: Duration;
   customSlug?: string;
   customUrlFileName?: string;
-  youtubeIds: {
-    mainInterview: string;
-    clips?: string[];
+  youtube: {
+    mainInterview: YoutubeVideo;
+    clips?: YoutubeVideo[];
   }
 }
 
