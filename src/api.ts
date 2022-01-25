@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { join, sep } from 'path';
+import urlJoin from 'proper-url-join';
 
 import type EpisodeYamlData from './types/EpisodeYamlData';
 import type EpisodeData from './types/EpisodeData';
@@ -10,6 +11,87 @@ import {
   // TRANSCRIPT_FILE_NAME,
   // OUTLINE_FILE_NAME,
 } from './constants'
+
+type YoutubePost = {
+  videoId: string;
+  title: string;
+  description: string;
+  tags: string[];
+}
+
+type EpisodeContent = Partial<{
+  publishDate: Date;
+  mp3Url: string;
+  website: {
+    slug: string;
+    title: string;
+    description: string;
+    transcript?: string;
+    outline?: string;
+  };
+  youtube: {
+    mainInterview: YoutubePost;
+    clips: YoutubePost[];
+  };
+  crossposting: {
+    robohub: {
+      title: string;
+      htmlContent: string;
+    }
+  };
+}>
+
+export async function getEpisodeContent(ep: EpisodeData, podcast: PodcastConfig): Promise<EpisodeContent> {
+
+  // get mp3 file path or use option
+  const baseUrl = podcast.hosting.baseMp3Url;
+  const mp3Url = (ep.customUrlFileName ?
+    getCustomHostedMp3Url(baseUrl, ep.number, ep.customUrlFileName) :
+    getHostedMp3UrlWithGuests(baseUrl, ep.number, ep.guests)
+  )
+  // get mp3 Size
+
+  // get main interview and clip titles, check them for length
+
+  // try to get and mark up the transcript
+  // try to get the outline
+
+  // set website content = description + links
+  // set transcript and outline
+
+  return {
+    mp3Url,
+  } as EpisodeContent
+}
+
+export function getHostedMp3UrlWithGuests(
+  baseUrl: string,
+  episodeNumber: number,
+  episodeGuests: string | string[],
+) {
+  if (typeof episodeGuests === 'string') {
+    episodeGuests = [episodeGuests]
+  }
+  if (episodeGuests.length === 0) {
+    throw new Error('Must have at least one guest')
+  }
+  if (episodeGuests.length > 1) {
+    episodeGuests = [...episodeGuests.slice(0, -1), 'and', ...episodeGuests.slice(-1)]
+  }
+  const guestList = episodeGuests.join(' ')
+  return getCustomHostedMp3Url(baseUrl, episodeNumber, guestList)
+}
+
+export function getCustomHostedMp3Url(
+  baseUrl: string,
+  episodeNumber: number,
+  customBaseName: string,
+): string {
+  if (customBaseName.trim() === '') {
+    throw new Error('Received an empty customBaseName')
+  }
+  return urlJoin(baseUrl, `STA Ep ${episodeNumber} - ${customBaseName}.mp3`)
+}
 
 export async function getEpisodeDataBySlug(slug: string, episodesDirectory: string) {
   const episodeNumber = getEpisodeNumberFromSlug(slug);

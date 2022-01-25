@@ -44,6 +44,7 @@
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
     "@types/jest": "^27.4.0",
+    "@types/proper-url-join": "^2.1.1",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^8.7.0",
@@ -53,6 +54,7 @@
   },
   "dependencies": {
     "podcast": "^2.0.0",
+    "proper-url-join": "^2.1.1",
     "yaml": "^1.10.2"
   }
 }

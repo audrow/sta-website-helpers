@@ -3,7 +3,18 @@ RECORD
 
 This will be a document where I record some thoughts on this project.
 
+- [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
+
+2022-01-25: Use Episode Numbers Rather than Slugs
+-------------------------------------------------
+
+Rather than copying NextJS's blog example, I should use episode numbers to get the episode data, not slugs.
+The slug is unimportant and is generated from the episode data.
+Episode numbers are fixed and this information is given by the folder.
+This will be a better and easier way to keep track of things.
+The slug can be a derived property.
+I will want to get all of the slugs, but I can do this from all of the episode numbers.
 
 2022-01-22: Storing Large Files
 -------------------------------

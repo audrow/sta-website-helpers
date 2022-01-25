@@ -4,9 +4,52 @@ import {
   getEpisodeNumberFromSlug,
   getEpisodeSlug,
   getEpisodeDataBySlug,
+  getCustomHostedMp3Url,
+  getHostedMp3UrlWithGuests,
 } from "../api";
 
 import { join } from "path";
+
+
+describe("getHostedMp3UrlWithGuests", () => {
+  const baseUrl = "https://example.com";
+  it("should return the expected URL", () => {
+    expect(getHostedMp3UrlWithGuests(baseUrl, 1, "John Doe")).toBe(
+      "https://example.com/STA Ep 1 - John Doe.mp3"
+    );
+    expect(getHostedMp3UrlWithGuests(baseUrl, 1, ["John Doe"])).toBe(
+      "https://example.com/STA Ep 1 - John Doe.mp3"
+    );
+    expect(getHostedMp3UrlWithGuests(baseUrl, 1, ["John Doe", "Bob Smith"])).toBe(
+      "https://example.com/STA Ep 1 - John Doe and Bob Smith.mp3"
+    );
+    expect(getHostedMp3UrlWithGuests(baseUrl, 1, ["John Doe", "Bob Smith", "Sara Wong"])).toBe(
+      "https://example.com/STA Ep 1 - John Doe Bob Smith and Sara Wong.mp3"
+    );
+    expect(getHostedMp3UrlWithGuests(baseUrl, 1, ["John Doe", "Bob Smith", "Sara Wong", "Margaret Brown"])).toBe(
+      "https://example.com/STA Ep 1 - John Doe Bob Smith Sara Wong and Margaret Brown.mp3"
+    );
+  })
+  it("should error when given an empty string", () => {
+    expect(() => getHostedMp3UrlWithGuests(baseUrl, 1, "")).toThrowError()
+  })
+  it("should error when given an empty list", () => {
+    expect(() => getHostedMp3UrlWithGuests(baseUrl, 1, [])).toThrowError(
+      'Must have at least one guest')
+  })
+})
+
+describe("getCustomHostedMp3Url", () => {
+  const baseUrl = "https://example.com";
+  it("should return the expected URL", () => {
+    expect(getHostedMp3UrlWithGuests(baseUrl, 1, "Welcome")).toBe(
+      "https://example.com/STA Ep 1 - Welcome.mp3"
+    );
+  })
+  it("should error when given an empty string", () => {
+    expect(() => getCustomHostedMp3Url(baseUrl, 1, "")).toThrowError()
+  })
+})
 
 describe("getEpisodeDataBySlug", () => {
   it("should return the correct episode data", async () => {
@@ -16,6 +59,17 @@ describe("getEpisodeDataBySlug", () => {
     expect(episodeData.slug).toBe(slug);
     expect(episodeData.path).toBe(join(episodesDirectory, '10'));
     expect(episodeData.number).toBe(10);
+  })
+
+  it("should throw an error on no matching slug", async () => {
+    const slug = "99-not-a-slug"
+    const episodesDirectory = join(__dirname, 'data', 'episodes');
+    try {
+      await getEpisodeDataBySlug(slug, episodesDirectory);
+      fail("Expected an error to be thrown");
+    } catch (e) {
+      expect(e).toBeTruthy();
+    }
   })
 });
 
