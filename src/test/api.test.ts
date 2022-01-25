@@ -3,10 +3,21 @@ import {
   getEpisodeNumberFromPath,
   getEpisodeNumberFromSlug,
   getEpisodeSlug,
+  getEpisodeDataBySlug,
 } from "../api";
 
 import { join } from "path";
 
+describe("getEpisodeDataBySlug", () => {
+  it("should return the correct episode data", async () => {
+    const slug = "10-brett-alrich"
+    const episodesDirectory = join(__dirname, 'data', 'episodes');
+    const episodeData = await getEpisodeDataBySlug(slug, episodesDirectory);
+    expect(episodeData.slug).toBe(slug);
+    expect(episodeData.path).toBe(join(episodesDirectory, '10'));
+    expect(episodeData.number).toBe(10);
+  })
+});
 
 describe("getEpisodeSlugs", () => {
   it("should return an array of episode slugs", () => {

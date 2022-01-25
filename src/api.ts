@@ -2,24 +2,28 @@ import fs from 'fs';
 import { join, sep } from 'path';
 
 import type EpisodeYamlData from './types/EpisodeYamlData';
+import type EpisodeData from './types/EpisodeData';
+import type PodcastConfig from './types/PodcastConfig';
+
 import {
-  INFO_FILE_NAME,
+  INFO_TS_FILE_NAME,
   // TRANSCRIPT_FILE_NAME,
   // OUTLINE_FILE_NAME,
 } from './constants'
 
-export async function getEpisodeBySlug(slug: string, episodesDirectory: string) {
+export async function getEpisodeDataBySlug(slug: string, episodesDirectory: string) {
   const episodeNumber = getEpisodeNumberFromSlug(slug);
   const episodeDirectory = join(episodesDirectory, episodeNumber.toString(), );
 
-  const infoFilePath = join(episodeDirectory, INFO_FILE_NAME);
+  const infoFilePath = join(episodeDirectory, INFO_TS_FILE_NAME);
   const info = (await import(infoFilePath)).default as EpisodeYamlData;
-
-  return {
-    ...info,
-    episodeNumber,
+  const episodeData: EpisodeData = {
     slug,
-  }
+    path: episodeDirectory,
+    number: episodeNumber,
+    ...info,
+  };
+  return episodeData
 }
 
 export async function getEpisodeSlugs(episodesDirectory: string) {
@@ -31,7 +35,7 @@ export async function getEpisodeSlugs(episodesDirectory: string) {
   for await (const episodeDirectory of episodeDirectories) {
     const episodeNumber = getEpisodeNumberFromPath(episodeDirectory);
 
-    const infoFilePath = join(episodesDirectory, episodeDirectory, INFO_FILE_NAME);
+    const infoFilePath = join(episodesDirectory, episodeDirectory, INFO_TS_FILE_NAME);
     const info = (await import(infoFilePath)).default as EpisodeYamlData;
 
     slugs.push(getEpisodeSlug(episodeNumber, info.guests));
@@ -76,8 +80,12 @@ export function getEpisodeSlug(episodeNumber: number, guests: string | string[])
     .join('-');
 }
 
-// const episodeDirectory = './src/test/data/episodes';
-// console.log(getEpisodeSlugs(episodeDirectory));
-// console.log(
-//   parseInt('12-brett-aldrich-1')
-// )
+async function main() {
+  const episodeDirectory = join(__dirname, 'test', 'data', 'episodes');
+  const slugs = await getEpisodeSlugs(episodeDirectory)
+  console.log(slugs)
+  const ep = await getEpisodeDataBySlug(slugs[0], episodeDirectory)
+  console.log(ep)
+}
+
+main()
