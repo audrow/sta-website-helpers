@@ -5,28 +5,50 @@ import {
   getEpisodeSlug,
 } from "../api";
 
+import { join } from "path";
+
 
 describe("getEpisodeSlugs", () => {
   it("should return an array of episode slugs", () => {
-    const episodesDirectory = './src/test/data/episodes';
+    const episodesDirectory = join(__dirname, 'data', 'episodes');
     expect(getEpisodeSlugs(episodesDirectory)).resolves.toEqual(["10-brett-aldrich", "11-cbq"]);
   });
 
-  // // Fix and enable
-  // it("should throw an error if the episodes directory does not exist", () => {
-  //   const episodesDirectory = './src/test/data/not-a-directory';
-  //   expect(async () => await getEpisodeSlugs(episodesDirectory)).toThrowError();
-  // });
+  it("should throw an error if the episodes directory does not exist", () => {
+    const episodesDirectory = join(__dirname, 'data', 'not-a-directory');
+    expect(async () => {
+      try {
+        await getEpisodeSlugs(episodesDirectory)
+        fail('should have thrown an error');
+      } catch (e) {
+        expect(e).toBeInstanceOf(Error);
+      }
+    })
+  });
 
-  // it("should throw an error if the episodes directory is empty", () => {
-  //   const episodesDirectory = './src/test/data/empty-dir';
-  //   expect(async () => await getEpisodeSlugs(episodesDirectory)).toThrowError();
-  // });
+  it("should throw an error if the episodes directory is empty", () => {
+    const episodesDirectory = join(__dirname, 'data', 'empty-dir');
+    expect(async () => {
+      try {
+        await getEpisodeSlugs(episodesDirectory)
+        fail('should have thrown an error');
+      } catch (e) {
+        expect(e).toBeInstanceOf(Error);
+      }
+    })
+  });
 
-  // it("should throw an error when there's no episode info file", () => {
-  //   const episodesDirectory = './src/test/data/not-info';
-  //   expect(async () => await getEpisodeSlugs(episodesDirectory)).toThrowError();
-  // })
+  it("should throw an error when there's no episode info file", () => {
+    const episodesDirectory = join(__dirname, 'data', 'not-info');
+    expect(async () => {
+      try {
+        await getEpisodeSlugs(episodesDirectory)
+        fail('should have thrown an error');
+      } catch (e) {
+        expect(e).toBeInstanceOf(Error);
+      }
+    })
+  })
 })
 
 describe("getEpisodeSlug", () => {

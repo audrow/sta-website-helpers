@@ -27,14 +27,16 @@ export async function getEpisodeSlugs(episodesDirectory: string) {
   if (episodeDirectories.length === 0) {
     throw new Error(`No episodes found in ${episodesDirectory}`);
   }
-  return episodeDirectories.map(async episodeDirectory => {
+  const slugs: string[] = [];
+  for await (const episodeDirectory of episodeDirectories) {
     const episodeNumber = getEpisodeNumberFromPath(episodeDirectory);
 
     const infoFilePath = join(episodesDirectory, episodeDirectory, INFO_FILE_NAME);
     const info = (await import(infoFilePath)).default as EpisodeYamlData;
 
-    return getEpisodeSlug(episodeNumber, info.guests);
-  })
+    slugs.push(getEpisodeSlug(episodeNumber, info.guests));
+  }
+  return slugs
 }
 
 export function getEpisodeNumberFromSlug(slug: string) {
