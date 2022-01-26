@@ -1,4 +1,4 @@
-import fs from 'fs';
+import * as fs from 'fs';
 import { join, sep } from 'path';
 import urlJoin from 'proper-url-join';
 
@@ -75,11 +75,7 @@ export function getHostedMp3UrlWithGuests(
   if (episodeGuests.length === 0) {
     throw new Error('Must have at least one guest')
   }
-  if (episodeGuests.length > 1) {
-    episodeGuests = [...episodeGuests.slice(0, -1), 'and', ...episodeGuests.slice(-1)]
-  }
-  const guestList = episodeGuests.join(' ')
-  return getCustomHostedMp3Url(baseUrl, episodeNumber, guestList)
+  return getCustomHostedMp3Url(baseUrl, episodeNumber, listToString(episodeGuests))
 }
 
 export function getCustomHostedMp3Url(
@@ -95,10 +91,17 @@ export function getCustomHostedMp3Url(
 
 export async function getEpisodeDataBySlug(slug: string, episodesDirectory: string) {
   const episodeNumber = getEpisodeNumberFromSlug(slug);
+  return await getEpisodeDataByNumber(episodeNumber, episodesDirectory);
+}
+
+export async function getEpisodeDataByNumber(episodeNumber: number, episodesDirectory: string) {
   const episodeDirectory = join(episodesDirectory, episodeNumber.toString(), );
 
   const infoFilePath = join(episodeDirectory, INFO_TS_FILE_NAME);
   const info = (await import(infoFilePath)).default as EpisodeYamlData;
+
+  const slug = info.customSlug || getEpisodeSlug(episodeNumber, info.guests);
+
   const episodeData: EpisodeData = {
     slug,
     path: episodeDirectory,
@@ -150,16 +153,28 @@ export function getEpisodeSlug(episodeNumber: number, guests: string | string[])
   } else if (guests.map(g => g.trim()).some(g => g === '')) {
     throw new Error('guests must not contain empty strings')
   }
-  if (guests.length > 1) {
-    guests = [...guests.slice(0, -1), 'and', ...guests.slice(-1)];
+  guests = listToString(guests)
+    .toLowerCase()
+    .replace(/,/g, '')
+    .split(/\s/)
+  return [episodeNumber.toString(), ...guests].join('-');
+}
+
+export function listToString(items: string[], and = 'and') {
+  if (items.length === 0) {
+    throw new Error('items must not be empty')
   }
-  return [episodeNumber.toString(), ...guests]
-    .map(ele => (
-      ele
-        .toLowerCase()
-        .trim()
-        .replace(/\s/g, '-')))
-    .join('-');
+  const trimmedItems = items.map(i => i.trim())
+  if (trimmedItems.some(i => i === '')) {
+    throw new Error('items must not contain empty strings (white space is trimmed)')
+  }
+  if (trimmedItems.length === 1) {
+    return trimmedItems[0]
+  } else if (trimmedItems.length === 2) {
+    return `${trimmedItems[0]} ${and} ${trimmedItems[1]}`
+  } else {
+    return `${trimmedItems.slice(0, -1).join(', ')}, and ${trimmedItems.slice(-1)[0]}`
+  }
 }
 
 async function main() {

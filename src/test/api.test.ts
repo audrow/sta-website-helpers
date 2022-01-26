@@ -1,4 +1,5 @@
 import {
+  listToString,
   getEpisodeSlugs,
   getEpisodeNumberFromPath,
   getEpisodeNumberFromSlug,
@@ -24,10 +25,10 @@ describe("getHostedMp3UrlWithGuests", () => {
       "https://example.com/STA Ep 1 - John Doe and Bob Smith.mp3"
     );
     expect(getHostedMp3UrlWithGuests(baseUrl, 1, ["John Doe", "Bob Smith", "Sara Wong"])).toBe(
-      "https://example.com/STA Ep 1 - John Doe Bob Smith and Sara Wong.mp3"
+      "https://example.com/STA Ep 1 - John Doe, Bob Smith, and Sara Wong.mp3"
     );
     expect(getHostedMp3UrlWithGuests(baseUrl, 1, ["John Doe", "Bob Smith", "Sara Wong", "Margaret Brown"])).toBe(
-      "https://example.com/STA Ep 1 - John Doe Bob Smith Sara Wong and Margaret Brown.mp3"
+      "https://example.com/STA Ep 1 - John Doe, Bob Smith, Sara Wong, and Margaret Brown.mp3"
     );
   })
   it("should error when given an empty string", () => {
@@ -36,6 +37,27 @@ describe("getHostedMp3UrlWithGuests", () => {
   it("should error when given an empty list", () => {
     expect(() => getHostedMp3UrlWithGuests(baseUrl, 1, [])).toThrowError(
       'Must have at least one guest')
+  })
+})
+
+describe("listToString", () => {
+  it("should properly add commas", () => {
+    expect(listToString(["John Does"])).toBe("John Does");
+    expect(listToString(["John Doe", "Bob Smith"])).toBe("John Doe and Bob Smith");
+    expect(listToString(["John Doe", "Bob Smith", "Sara Wong"])).toBe("John Doe, Bob Smith, and Sara Wong");
+    expect(listToString(["John Doe", "Bob Smith", "Sara Wong", "Margaret Brown"])).toBe(
+      "John Doe, Bob Smith, Sara Wong, and Margaret Brown"
+    );
+  })
+  it("should raise an error on an empty list", () => {
+    expect(() => listToString([])).toThrowError()
+  })
+  it("should make sure that all items are not empty strings", () => {
+    expect(() => listToString([""])).toThrowError()
+    expect(() => listToString([" "])).toThrowError()
+    expect(() => listToString([" \t\n "])).toThrowError()
+    expect(() => listToString(["", "Bob Smith"])).toThrowError()
+    expect(() => listToString(["Bob Smith", ""])).toThrowError()
   })
 })
 
@@ -53,7 +75,7 @@ describe("getCustomHostedMp3Url", () => {
 
 describe("getEpisodeDataBySlug", () => {
   it("should return the correct episode data", async () => {
-    const slug = "10-brett-alrich"
+    const slug = "10-brett-aldrich"
     const episodesDirectory = join(__dirname, 'data', 'episodes');
     const episodeData = await getEpisodeDataBySlug(slug, episodesDirectory);
     expect(episodeData.slug).toBe(slug);
