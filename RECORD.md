@@ -3,8 +3,18 @@ RECORD
 
 This will be a document where I record some thoughts on this project.
 
+- [2022-01-26: Updating How Episodes are Obtained](#2022-01-26-updating-how-episodes-are-obtained)
 - [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
+
+2022-01-26: Updating How Episodes are Obtained
+----------------------------------------------
+
+The slug of an episode is a computed property, usually it uses the guests, but sometimes it is a custom slug.
+One challenge is that I want to get a post from the slug.
+I think that the best way to do this is memoization.
+I should compute and sort all of the posts and then store those posts in a data structure.
+From there, I can use the data structure to conveniently access fields of the posts.
 
 2022-01-25: Use Episode Numbers Rather than Slugs
 -------------------------------------------------
