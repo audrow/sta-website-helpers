@@ -1,13 +1,11 @@
-STA Website Helpers
-===================
+# STA Website Helpers
 
-Install
--------
+## Install
+
 ```
 $ npm install @sta/website-helpers
 ```
 
-Usage
------
+## Usage
 
 To come.

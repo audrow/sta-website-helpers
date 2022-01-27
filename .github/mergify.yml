@@ -2,10 +2,10 @@ pull_request_rules:
   - name: Automatic merge on approval or dependabot PR
     conditions:
       - and:
-        - or:
-          - "#approved-reviews-by>=1"
-          - author~=^dependabot(|-preview)\[bot\]$
-        - check-success=continuous-integration
+          - or:
+              - '#approved-reviews-by>=1'
+              - author~=^dependabot(|-preview)\[bot\]$
+          - check-success=continuous-integration
     actions:
       merge:
         method: squash

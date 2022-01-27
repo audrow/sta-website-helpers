@@ -1,5 +1,4 @@
-RECORD
-======
+# RECORD
 
 This will be a document where I record some thoughts on this project.
 
@@ -7,8 +6,7 @@ This will be a document where I record some thoughts on this project.
 - [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
 
-2022-01-26: Updating How Episodes are Obtained
-----------------------------------------------
+## 2022-01-26: Updating How Episodes are Obtained
 
 The slug of an episode is a computed property, usually it uses the guests, but sometimes it is a custom slug.
 One challenge is that I want to get a post from the slug.
@@ -16,8 +14,7 @@ I think that the best way to do this is memoization.
 I should compute and sort all of the posts and then store those posts in a data structure.
 From there, I can use the data structure to conveniently access fields of the posts.
 
-2022-01-25: Use Episode Numbers Rather than Slugs
--------------------------------------------------
+## 2022-01-25: Use Episode Numbers Rather than Slugs
 
 Rather than copying NextJS's blog example, I should use episode numbers to get the episode data, not slugs.
 The slug is unimportant and is generated from the episode data.
@@ -26,8 +23,7 @@ This will be a better and easier way to keep track of things.
 The slug can be a derived property.
 I will want to get all of the slugs, but I can do this from all of the episode numbers.
 
-2022-01-22: Storing Large Files
--------------------------------
+## 2022-01-22: Storing Large Files
 
 I think that I should not store episode MP3s and MP4s in the STA website repository.
 Doing so would bloat the repository, making clone times much slower.

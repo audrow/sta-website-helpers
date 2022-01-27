@@ -1,6 +1,6 @@
 type Link = {
-  name: string,
-  url: string,
+  name: string
+  url: string
 }
 
-export default Link;
+export default Link

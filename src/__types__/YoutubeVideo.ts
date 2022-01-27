@@ -1,6 +1,6 @@
 type YoutubeVideo = {
-  baseTitle: string;
-  videoId: string;
+  baseTitle: string
+  videoId: string
 }
 
 export default YoutubeVideo

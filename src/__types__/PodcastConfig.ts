@@ -1,35 +1,35 @@
-import Link from './Link';
+import Link from './Link'
 
 type PodcastConfig = {
-  name: string;
-  tagline: string;
-  description: string;
-  copyright: string;
+  name: string
+  tagline: string
+  description: string
+  copyright: string
   github: {
-    organization: string;
-    repository: string;
+    organization: string
+    repository: string
   }
   owner: {
-    name: string;
-    email: string;
+    name: string
+    email: string
   }
   hosting: {
-    baseMp3Url: string;
+    baseMp3Url: string
   }
   itunes: {
-    feedFile: string;
-    feedUrl: string;
-    categories: string[];
-    isExplicit: boolean;
-    type: 'episodic' | 'serial';
-    image: string;
-    language: string;
+    feedFile: string
+    feedUrl: string
+    categories: string[]
+    isExplicit: boolean
+    type: 'episodic' | 'serial'
+    image: string
+    language: string
   }
-  siteUrl: string;
+  siteUrl: string
   links: {
-    podcast: Link[];
-    social: Link[];
+    podcast: Link[]
+    social: Link[]
   }
 }
 
-export default PodcastConfig;
+export default PodcastConfig

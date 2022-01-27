@@ -1,6 +1,6 @@
 type Mp3 = {
-  url: string;
-  size: number;
+  url: string
+  size: number
 }
 
-export default Mp3;
+export default Mp3

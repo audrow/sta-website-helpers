@@ -1,5 +1,4 @@
-TODO
-====
+# TODO
 
 - [x] Setup Mergify and Dependabot
 - [x] Try locally installing this package and using it
@@ -26,8 +25,8 @@ TODO
   - [ ] `getEpisodeTags()`
   - [ ] `getEpisodesWithTags(tags: string[])`
 
-Consider
---------
+## Consider
+
 - [ ] Create a tool to upload the MP3 (hosting site) and MP4 (Youtube with cover image)
   - [ ] Figure out a way to read MP3 size
   - [ ] Infer MP3 duration
