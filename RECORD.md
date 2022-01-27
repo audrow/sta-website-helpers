@@ -16,7 +16,13 @@ I added or updated several static tests after watching the Static Analysis Testi
 - Husky for precommit hooks
 - `lint-staged` for automatically formatting and performing simple linting the staged files
 
-I also setup testing to work with Typescript directly and reorganized my `package.json` scripts.
+I also setup testing to work with Typescript directly, reorganized my `package.json` scripts, and updated the README.
+
+My next steps are as follows:
+
+- (Possible) Clean up the build process.
+- Refactor the episodes API: separate out utils and core logic.
+- Update the episodes API to be a posts API, since I may have posts that are not episodes, and use memoization in getting the posts content. This will make it possible to search for posts by slug, while having custom slugs.
 
 ## 2022-01-26: Updating How Episodes are Obtained
 
