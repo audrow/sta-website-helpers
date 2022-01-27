@@ -177,12 +177,12 @@ export function listToString(items: string[], and = 'and') {
   }
 }
 
-async function main() {
-  const episodeDirectory = join(__dirname, 'test', 'data', 'episodes');
-  const slugs = await getEpisodeSlugs(episodeDirectory)
-  console.log(slugs)
-  const ep = await getEpisodeDataBySlug(slugs[0], episodeDirectory)
-  console.log(ep)
-}
+// async function main() {
+//   const episodeDirectory = join(__dirname, 'test', 'data', 'episodes');
+//   const slugs = await getEpisodeSlugs(episodeDirectory)
+//   console.log(slugs)
+//   const ep = await getEpisodeDataBySlug(slugs[0], episodeDirectory)
+//   console.log(ep)
+// }
 
-main()
+// main()
