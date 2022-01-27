@@ -12,10 +12,8 @@ jobs:
           node-version: 16
       - name: Install
         run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm run test
+      - name: Validate
+        run: npm run validate
   publish-npm:
     needs: continuous-integration
     runs-on: ubuntu-latest
