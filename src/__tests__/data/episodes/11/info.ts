@@ -1,4 +1,4 @@
-import EpisodeYamlData from "../../../../types/EpisodeYamlData"
+import EpisodeYamlData from "../../../../__types__/EpisodeYamlData"
 
 const title = 'Commercial-grade Autonomous Mowers, Safety, and Dogfooding'
 const description = `

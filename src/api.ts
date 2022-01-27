@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import { join, sep } from 'path';
 import urlJoin from 'proper-url-join';
 
-import type EpisodeYamlData from './types/EpisodeYamlData';
-import type EpisodeData from './types/EpisodeData';
-import type PodcastConfig from './types/PodcastConfig';
+import type EpisodeYamlData from './__types__/EpisodeYamlData';
+import type EpisodeData from './__types__/EpisodeData';
+import type PodcastConfig from './__types__/PodcastConfig';
 
 import {
   INFO_TS_FILE_NAME,

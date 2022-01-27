@@ -1,4 +1,4 @@
-import EpisodeYamlData from "../../../../types/EpisodeYamlData"
+import EpisodeYamlData from "../../../../__types__/EpisodeYamlData"
 
 const title = 'State Machines for Complex Robot Behavior'
 const description = `
