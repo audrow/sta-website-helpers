@@ -2,10 +2,28 @@
 
 This will be a document where I record some thoughts on this project.
 
+- [2022-01-28: Refactor to Get Posts](#2022-01-28-refactor-to-get-posts)
 - [2022-01-27: Added Several Tools for QoL](#2022-01-27-added-several-tools-for-qol)
 - [2022-01-26: Updating How Episodes are Obtained](#2022-01-26-updating-how-episodes-are-obtained)
 - [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
+
+## 2022-01-28: Refactor to Get Posts
+
+Today I did quite a bit of refactoring.
+I created a method called `getPost` that gets a post and all relevant information for it.
+This method will be useful in providing the raw data to be transformed into content, like the RSS feed and the posts pages.
+
+The next steps are as follows:
+
+- Test `getPost`, especially in the case when a post doesn't have a number or guests.
+- Create a `getPosts` method that gets all posts and memoizes the results. The memoized results will then be used by methods like `getPostFromSlug`, which are necessary for NextJS's static paths.
+- Add functionality to markup the transcript and outline to HTML.
+- Generate the required content, including
+  - STA website blog post (data structure to style in the main website)
+  - Blog posts for Robohub and ITN (text to copy paste)
+  - YouTube post and description for the main content and clips (text to copy paste)
+- Add functionality to generate a tags list and get posts if they include specific tags.
 
 ## 2022-01-27: Added Several Tools for QoL
 
