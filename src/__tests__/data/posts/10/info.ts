@@ -1,4 +1,4 @@
-import EpisodeYamlData from '../../../../__types__/EpisodeYamlData'
+import PostYamlData from '../../../../__types__/PostYamlData'
 
 const title = 'State Machines for Complex Robot Behavior'
 const description = `
@@ -9,7 +9,7 @@ Brett explains SMACC, its origins, other strategies for robot control such as be
   .replace(/\n/g, ' ')
   .trim()
 
-const ep: EpisodeYamlData = {
+const post: PostYamlData = {
   guests: 'Brett Aldrich',
   title,
   description,
@@ -38,13 +38,14 @@ const ep: EpisodeYamlData = {
       url: 'https://smacc.dev/',
     },
   ],
+  mp3SizeBytes: 216263919,
   publishDate: new Date(2021, 12, 28),
   youtube: {
-    mainInterview: {
+    mainContent: {
       baseTitle: title,
       videoId: '3ju1g6g51ss',
     },
   },
 }
 
-export default ep
+export default post

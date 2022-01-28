@@ -1,8 +1,11 @@
-export {getEpisodeSlugs} from './api'
-
-import type EpisodeYamlData from './__types__/EpisodeYamlData'
-import type EpisodeData from './__types__/EpisodeData'
+import type PostYamlData from './__types__/PostYamlData'
+import type Post from './__types__/Post'
 import type Link from './__types__/Link'
 import type PodcastConfig from './__types__/PodcastConfig'
 
-export type {EpisodeYamlData, EpisodeData, Link, PodcastConfig}
+export type {
+  PostYamlData as EpisodeYamlData,
+  Post as EpisodeData,
+  Link,
+  PodcastConfig,
+}

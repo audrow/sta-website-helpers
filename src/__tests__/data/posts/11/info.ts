@@ -1,4 +1,4 @@
-import EpisodeYamlData from '../../../../__types__/EpisodeYamlData'
+import PostYamlData from '../../../../__types__/PostYamlData'
 
 const title = 'Commercial-grade Autonomous Mowers, Safety, and Dogfooding'
 const description = `
@@ -9,7 +9,7 @@ We talk about Greenzie's autonomous mowing system, how Greenzie has worked with 
   .replace(/\n/g, ' ')
   .trim()
 
-const ep: EpisodeYamlData = {
+const post: PostYamlData = {
   guests: 'CBQ',
   title,
   description,
@@ -42,9 +42,10 @@ const ep: EpisodeYamlData = {
       url: 'https://www.youtube.com/c/Greenzie',
     },
   ],
+  mp3SizeBytes: 225870038,
   publishDate: new Date(2021, 1, 11),
   youtube: {
-    mainInterview: {
+    mainContent: {
       baseTitle: title,
       videoId: 'pBWLSmoBj54',
     },
@@ -73,4 +74,4 @@ const ep: EpisodeYamlData = {
   },
 }
 
-export default ep
+export default post

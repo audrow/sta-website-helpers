@@ -2,21 +2,22 @@ import Link from './Link'
 import Duration from './Duration'
 import YoutubeVideo from './YoutubeVideo'
 
-type EpisodeYamlData = {
-  guests: string | string[]
+type PostYamlData = {
+  guests?: string | string[]
   title: string
   description: string
   excerpt: string
   publishDate: Date
   tags: string[]
-  links: Link[]
+  links?: Link[]
   duration: Duration
   customSlug?: string
-  customUrlFileName?: string
+  customMp3FileName?: string
+  mp3SizeBytes: number
   youtube: {
-    mainInterview: YoutubeVideo
+    mainContent: YoutubeVideo
     clips?: YoutubeVideo[]
   }
 }
 
-export default EpisodeYamlData
+export default PostYamlData
