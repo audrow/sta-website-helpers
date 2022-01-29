@@ -1,6 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getPost should get a standard episode with a number 1`] = `
+exports[`PostLoader getPostBySlug gets a post with a custom slug by slug 1`] = `
+Object {
+  "customMp3FileName": "STA Ep 0 - Welcome",
+  "customSlug": "0-welcome",
+  "description": "Audrow Nash introduces the Sense Think Act Podcast.",
+  "duration": Object {
+    "hours": 0,
+    "minutes": 4,
+    "seconds": 39,
+  },
+  "excerpt": "Audrow Nash introduces the Sense Think Act Podcast.",
+  "includes": Object {
+    "coverArtPath": undefined,
+    "outlineTxt": undefined,
+    "transcriptSrt": undefined,
+  },
+  "mp3": Object {
+    "sizeBytes": 9097894,
+    "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 0 - Welcome.mp3",
+  },
+  "mp3SizeBytes": 9097894,
+  "number": undefined,
+  "publishDate": 2021-09-24T07:00:00.000Z,
+  "slug": "0-welcome",
+  "tags": Array [
+    "announcement",
+  ],
+  "title": "Welcome to Sense Think Act",
+  "youtube": Object {
+    "mainContent": Object {
+      "baseTitle": "Welcome to Sense Think Act",
+      "videoId": "7PdIbR8lNGI",
+    },
+  },
+}
+`;
+
+exports[`PostLoader getPostBySlug gets a post with a number by slug 1`] = `
 Object {
   "description": "In this episode, Audrow Nash speaks to Charles Brian Quinn (aka, CBQ), CEO and a Co-Founder of Greenzie. Greenzie make an autonomous driving system for commercial lawn mowers. We talk about Greenzie's autonomous mowing system, how Greenzie has worked with manufacturers to up-fit their system into comercial mowers, how Greenzie does dog-fooding, safety and standards, and about CBQ's experiences bootstrapping and with venture capital.",
   "duration": Object {
@@ -10673,43 +10710,6 @@ and I hope to see you next time
     "mainContent": Object {
       "baseTitle": "Commercial-grade Autonomous Mowers, Safety, and Dogfooding",
       "videoId": "pBWLSmoBj54",
-    },
-  },
-}
-`;
-
-exports[`getPost should get an episode with a custom slug and mp3 URL 1`] = `
-Object {
-  "customMp3FileName": "STA Ep 0 - Welcome",
-  "customSlug": "0-welcome",
-  "description": "Audrow Nash introduces the Sense Think Act Podcast.",
-  "duration": Object {
-    "hours": 0,
-    "minutes": 4,
-    "seconds": 39,
-  },
-  "excerpt": "Audrow Nash introduces the Sense Think Act Podcast.",
-  "includes": Object {
-    "coverArtPath": undefined,
-    "outlineTxt": undefined,
-    "transcriptSrt": undefined,
-  },
-  "mp3": Object {
-    "sizeBytes": 9097894,
-    "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 0 - Welcome.mp3",
-  },
-  "mp3SizeBytes": 9097894,
-  "number": undefined,
-  "publishDate": 2021-09-24T07:00:00.000Z,
-  "slug": "0-welcome",
-  "tags": Array [
-    "announcement",
-  ],
-  "title": "Welcome to Sense Think Act",
-  "youtube": Object {
-    "mainContent": Object {
-      "baseTitle": "Welcome to Sense Think Act",
-      "videoId": "7PdIbR8lNGI",
     },
   },
 }
