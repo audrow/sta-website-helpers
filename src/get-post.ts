@@ -220,13 +220,25 @@ export function getCustomMp3Url(
 }
 
 export function getIncludes(directory: string) {
+  function tryOrUndefined<T>(fn: () => T): T | undefined {
+    try {
+      return fn()
+    } catch {
+      return undefined
+    }
+  }
+
   const transcriptPath = join(directory, TRANSCRIPT_FILE_NAME)
   const outlinePath = join(directory, OUTLINE_FILE_NAME)
   const coverArtPath = join(directory, COVER_ART_FILE_NAME)
 
   const includes: Partial<PostIncludes> = {
-    transcriptSrt: fs.readFileSync(transcriptPath, 'utf8'),
-    outlineTxt: fs.readFileSync(outlinePath, 'utf8'),
+    transcriptSrt: tryOrUndefined<string>(() =>
+      fs.readFileSync(transcriptPath, 'utf8'),
+    ),
+    outlineTxt: tryOrUndefined<string>(() =>
+      fs.readFileSync(outlinePath, 'utf8'),
+    ),
     coverArtPath: fs.existsSync(coverArtPath) ? coverArtPath : undefined,
   }
   return includes

@@ -1,5 +1,5 @@
 import {
-  // getPost,
+  getPost,
   getNumber,
   getSlug,
   getMp3Url,
@@ -7,12 +7,58 @@ import {
   // getIncludes,
 } from '../get-post'
 
-// describe('getPost', () => {
-//   const episodesDirectory = join()
-//   it('should get posts data', async () => {
-//     //
-//   })
-// })
+import {join} from 'path'
+import podcast from './data/podcast.config'
+
+describe('getPost', () => {
+  const dataDirectory = join(__dirname, 'data')
+  it('should get a standard episode with a number', async () => {
+    const episodeDir = join(dataDirectory, 'posts', '11')
+    const post = await getPost(podcast, episodeDir)
+    expect(post).toMatchSnapshot()
+    expect(post.slug).toBe('11-cbq')
+    expect(post.mp3.url).toBe(
+      'https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 11 - CBQ.mp3',
+    )
+    expect(post.number).toBe(11)
+    expect(post.includes?.outlineTxt).toBeDefined()
+    expect(post.includes?.transcriptSrt).toBeDefined()
+    expect(post.includes?.coverArtPath).toBeDefined()
+  })
+  it('should get an episode with a custom slug and mp3 URL', async () => {
+    const episodeDir = join(dataDirectory, 'posts', 'welcome')
+    const post = await getPost(podcast, episodeDir)
+    expect(post).toMatchSnapshot()
+    expect(post.slug).toBe('0-welcome')
+    expect(post.mp3.url).toBe(
+      'https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 0 - Welcome.mp3',
+    )
+    expect(post.number).toBeUndefined()
+    expect(post.includes?.outlineTxt).toBeUndefined()
+    expect(post.includes?.transcriptSrt).toBeUndefined()
+    expect(post.includes?.coverArtPath).toBeUndefined()
+  })
+  it('should throw when given an empty folder', async () => {
+    const episodeDir = join(dataDirectory, 'empty-dir')
+    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+  })
+  it('should throw an error on no number or custom slug', async () => {
+    const episodeDir = join(
+      dataDirectory,
+      'bad-posts',
+      'no-number-or-custom-slug',
+    )
+    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+  })
+  it('should throw an error on no number or custom mp3 url', async () => {
+    const episodeDir = join(
+      dataDirectory,
+      'bad-posts',
+      'no-number-or-custom-url',
+    )
+    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+  })
+})
 
 describe('getMp3Url', () => {
   const baseUrl = 'https://example.com'
