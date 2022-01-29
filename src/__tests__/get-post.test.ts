@@ -38,10 +38,6 @@ describe('getPost', () => {
     expect(post.includes?.transcriptSrt).toBeUndefined()
     expect(post.includes?.coverArtPath).toBeUndefined()
   })
-  it('should throw when given an empty folder', async () => {
-    const episodeDir = join(dataDirectory, 'empty-dir')
-    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
-  })
   it('should throw an error on no number or custom slug', async () => {
     const episodeDir = join(
       dataDirectory,
@@ -56,6 +52,14 @@ describe('getPost', () => {
       'bad-posts',
       'no-number-or-custom-url',
     )
+    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+  })
+  it('should throw when given an empty folder', async () => {
+    const episodeDir = join(dataDirectory, 'bad-posts', 'empty-dir')
+    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+  })
+  it('should throw when given a non-existent folder', async () => {
+    const episodeDir = 'does-not-exist'
     expect(getPost(podcast, episodeDir)).rejects.toThrowError()
   })
 })
