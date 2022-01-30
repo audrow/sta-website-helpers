@@ -2,12 +2,17 @@
 
 This will be a document where I record some thoughts on this project.
 
+- [2022-01-30: Add tag support](#2022-01-30-add-tag-support)
 - [2022-01-29: Add PostLoader class](#2022-01-29-add-postloader-class)
 - [2022-01-28: Refactor to Get Posts](#2022-01-28-refactor-to-get-posts)
 - [2022-01-27: Added Several Tools for QoL](#2022-01-27-added-several-tools-for-qol)
 - [2022-01-26: Updating How Episodes are Obtained](#2022-01-26-updating-how-episodes-are-obtained)
 - [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
+
+## 2022-01-30: Add tag support
+
+Today, I added tag support, including storing a map of tags to the slugs of posts with that tag and a function that gives you the slugs of posts for a given tag.
 
 ## 2022-01-29: Add PostLoader class
 
