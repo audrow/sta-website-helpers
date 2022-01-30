@@ -10714,3 +10714,19 @@ and I hope to see you next time
   },
 }
 `;
+
+exports[`PostLoader init creates a tag list 1`] = `
+Array [
+  "startup",
+  "software",
+  "behavior trees",
+  "state machines",
+  "control",
+  "sensor fusion",
+  "autonomous driving",
+  "mowers",
+  "safety",
+  "dogfooding",
+  "announcement",
+]
+`;

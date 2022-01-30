@@ -22,6 +22,7 @@ describe('PostLoader init', () => {
         '0-welcome',
       ])
     })
+
     it('loads all the posts in reverse order with debug', async () => {
       const ph = new PostLoader(podcast, {
         isDebug: true,
@@ -39,6 +40,7 @@ describe('PostLoader init', () => {
         '99-future-post',
       ])
     })
+
     it('loads past posts without debug', async () => {
       const ph = new PostLoader(podcast, {
         isDebug: false,
@@ -51,6 +53,22 @@ describe('PostLoader init', () => {
       expect(slugs.length).toBe(3)
       expect(slugs).toEqual(['11-cbq', '10-brett-aldrich', '0-welcome'])
     })
+
+    it('creates a tag list', async () => {
+      const ph = new PostLoader(podcast, {
+        isDebug: false,
+        isNewestPostFirst: true,
+      })
+      await ph.init(dataDirectory)
+
+      expect(ph.getTags()).toMatchSnapshot()
+      const slugs = ph.getSlugsByTag('startup')
+      const expectedSlugs = ['11-cbq', '10-brett-aldrich']
+      expect(slugs).toEqual(expect.arrayContaining(expectedSlugs))
+      const posts = ph.getPosts(slugs)
+      expect(posts.map((p) => p.slug)).toEqual(expectedSlugs)
+    })
+
     it('throws when you miss init', async () => {
       const ph = new PostLoader(podcast, {
         isDebug: true,
@@ -65,6 +83,7 @@ describe('PostLoader init', () => {
       expect(() => ph.getPostBySlug('0-welcome')).not.toThrowError()
     })
   }
+
   {
     const dataDirectory = join(__dirname, 'data', 'duplicate-slugs')
     it('throws an error when there are duplicate slugs', async () => {

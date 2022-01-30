@@ -19,6 +19,7 @@ const defaultConfig: PodcastHelperConfig = {
 export class PostLoader {
   private podcast: PodcastConfig
   private posts: Post[]
+  private tagToPostMap: {[tag: string]: string[]}
   private config: PodcastHelperConfig
   private isInitialized: boolean
 
@@ -28,6 +29,7 @@ export class PostLoader {
   ) {
     this.podcast = podcast
     this.posts = []
+    this.tagToPostMap = {}
     this.config = {...defaultConfig, ...config}
     this.isInitialized = false
   }
@@ -40,6 +42,7 @@ export class PostLoader {
       const postDirectoryPath = join(postsDirectory, postDirectory)
       const post = await getPost(this.podcast, postDirectoryPath)
       if (this.config.isDebug || post.publishDate.getTime() < Date.now()) {
+        this.recordTags(post.tags, post.slug)
         posts.push(post)
       }
     }
@@ -48,6 +51,15 @@ export class PostLoader {
 
     this.posts = posts
     this.isInitialized = true
+  }
+
+  private recordTags(postTags: string[], postSlug: string) {
+    postTags.map((tag) => {
+      if (!this.tagToPostMap[tag]) {
+        this.tagToPostMap[tag] = []
+      }
+      this.tagToPostMap[tag].push(postSlug)
+    })
   }
 
   private checkPostsForDuplicateSlugs(posts: Post[]) {
@@ -77,9 +89,19 @@ export class PostLoader {
     }
   }
 
+  getTags() {
+    this.throwIfNotInitialized()
+    return Object.keys(this.tagToPostMap)
+  }
+
   getSlugs() {
     this.throwIfNotInitialized()
     return this.posts.map((post) => post.slug)
+  }
+
+  getSlugsByTag(tag: string) {
+    this.throwIfNotInitialized()
+    return this.tagToPostMap[tag]
   }
 
   getPostBySlug(slug: string) {
@@ -91,9 +113,16 @@ export class PostLoader {
     return post
   }
 
-  getPosts() {
+  getPosts(slugs: string[] = []) {
     this.throwIfNotInitialized()
-    return this.posts
+
+    if (slugs.length === 0) {
+      return this.posts
+    } else {
+      const posts = slugs.map((s) => this.getPostBySlug(s))
+      this.sortPostsByPublishDate(posts)
+      return posts
+    }
   }
 }
 
