@@ -2,11 +2,37 @@
 
 This will be a document where I record some thoughts on this project.
 
+- [2022-01-29: Add PostLoader class](#2022-01-29-add-postloader-class)
 - [2022-01-28: Refactor to Get Posts](#2022-01-28-refactor-to-get-posts)
 - [2022-01-27: Added Several Tools for QoL](#2022-01-27-added-several-tools-for-qol)
 - [2022-01-26: Updating How Episodes are Obtained](#2022-01-26-updating-how-episodes-are-obtained)
 - [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
+
+## 2022-01-29: Add PostLoader class
+
+Today I made a new class for loading several posts.
+I was initially thinking to do a set of functions that shared a global variable to keep track of the posts, but decided to use a class, instead.
+The class has an `init` method that loads in the posts and from that point, the posts are stored, so that I don't need to perform unnecessary file reads.
+I've also tested this class.
+I took advantage of the `toMatchSnapshot` function which is awesome.
+I really like this feature.
+
+My next steps are as follows:
+
+- Use the `PostLoader` to generate the required content. This has a few parts:
+  - Single post
+    - Get the parts for the blog post
+      - Combine the transcript and outline
+    - Generate static pages
+      - Youtube
+        - Main content
+        - Clips
+      - Robohub
+      - ITN
+  - All posts
+    - Generate the RSS Feed
+    - Generate tags cloud
 
 ## 2022-01-28: Refactor to Get Posts
 
