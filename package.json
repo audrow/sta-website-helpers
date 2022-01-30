@@ -20,7 +20,7 @@
     "check-format": "npm run prettier -- --list-different",
     "test": "jest",
     "validate-sync": "npm-run-all lint check-format test build",
-    "validate": "npm-run-all --parallel lint check-format test build"
+    "validate": "npm run format && npm-run-all --parallel lint check-format test build"
   },
   "files": [
     "dist/*"
