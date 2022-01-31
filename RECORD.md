@@ -13,6 +13,27 @@ This will be a document where I record some thoughts on this project.
 ## 2022-01-30: Add tag support
 
 Today, I added tag support, including storing a map of tags to the slugs of posts with that tag and a function that gives you the slugs of posts for a given tag.
+I also began work on the content maker and generated the RSS feed.
+
+I am however, thinking that I should refactor, or rather that I should not continue with the content maker class.
+I am thinking that all of the formatting and generating content for the class should live in the website repo.
+The purpose of this project is to expose the post content.
+
+Here is how I think that I should proceed:
+
+- Add better types for SRT and formatting
+- Rename and refocus this project on just exposing the post content.
+  - It would be great to remove the dependency on podcast config, but perhaps this can be done later.
+- Move the RSS generator to the websites repo.
+- Setup content generation now that the posts are exposed.
+- Get the website up and running.
+
+Also, it would be good to create a separate set of tools, for example:
+
+- Titling and uploading the MP3 to the correct website, as well as getting their size and duration.
+- Uploading the YouTube videos and their thumbnails.
+
+Another thought is that perhaps I could make this more general and not depend on the podcast config, since it is really only used in getting the url
 
 ## 2022-01-29: Add PostLoader class
 
