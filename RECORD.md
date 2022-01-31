@@ -33,7 +33,9 @@ Also, it would be good to create a separate set of tools, for example:
 - Titling and uploading the MP3 to the correct website, as well as getting their size and duration.
 - Uploading the YouTube videos and their thumbnails.
 
-Another thought is that perhaps I could make this more general and not depend on the podcast config, since it is really only used in getting the url
+Another thought is that perhaps I could make this more general and not depend on the podcast config, since it is really only used in getting the url.
+This could use custom functions to get specific fields.
+For example, a function could use the podcast config and take the selected text to get the MP3's URL.
 
 ## 2022-01-29: Add PostLoader class
 
