@@ -69,6 +69,7 @@
     "encodeurl": "^1.0.2",
     "podcast": "^2.0.0",
     "proper-url-join": "^2.1.1",
+    "srt-parser-2": "^1.1.7",
     "yaml": "^1.10.2"
   }
 }
