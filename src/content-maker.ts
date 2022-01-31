@@ -1,6 +1,5 @@
 import {Podcast} from 'podcast'
 import {memoize} from 'decko'
-import urlJoin from 'proper-url-join'
 
 import type {FeedOptions, ItemOptions} from 'podcast'
 
@@ -86,7 +85,7 @@ class ContentMaker {
       const itemOptions: ItemOptions = {
         title: post.title,
         description: post.description,
-        url: urlJoin(this.podcastConfig.siteUrl, 'episodes', post.slug),
+        url: post.url,
         date: post.publishDate,
         enclosure: {
           url: post.mp3.url,

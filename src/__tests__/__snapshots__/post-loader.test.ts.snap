@@ -28,6 +28,7 @@ Object {
     "announcement",
   ],
   "title": "Welcome to Sense Think Act",
+  "url": "https://sensethinkact.com/episodes/0-welcome",
   "youtube": Object {
     "mainContent": Object {
       "baseTitle": "Welcome to Sense Think Act",
@@ -10684,6 +10685,7 @@ and I hope to see you next time
     "dogfooding",
   ],
   "title": "Commercial-grade Autonomous Mowers, Safety, and Dogfooding",
+  "url": "https://sensethinkact.com/episodes/11-cbq",
   "youtube": Object {
     "clips": Array [
       Object {

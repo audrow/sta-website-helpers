@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import {join, sep} from 'path'
 import urlJoin from 'proper-url-join'
-import encodeUrl from 'encodeurl'
+import encodeurl from 'encodeurl'
 
 import {listToString} from './utils'
 
@@ -43,6 +43,9 @@ export async function getPost(
   // get the slug
   const slug = info.customSlug || getSlug(number!, info.guests!)
 
+  // get the post's url
+  const postUrl = urlJoin(podcast.siteUrl, 'episodes', slug)
+
   // get Mp3 URL
   const baseUrl = podcast.hosting.baseMp3Url
   const mp3Url = info.customMp3FileName
@@ -54,6 +57,7 @@ export async function getPost(
 
   return {
     slug,
+    url: postUrl,
     number,
     mp3: {
       url: mp3Url,
@@ -109,7 +113,7 @@ export function getCustomMp3Url(
   if (customBaseName.trim() === '') {
     throw new Error('Received an empty customBaseName')
   }
-  return encodeUrl(urlJoin(baseUrl, `${customBaseName}.mp3`))
+  return encodeurl(urlJoin(baseUrl, `${customBaseName}.mp3`))
 }
 
 export function getIncludes(directory: string) {

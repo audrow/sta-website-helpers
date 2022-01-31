@@ -4,6 +4,7 @@ import type PostIncludes from './PostIncludes'
 type Post = {
   slug: string
   number?: number
+  url: string
   mp3: {
     url: string
     sizeBytes: number
