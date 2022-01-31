@@ -1,6 +1,7 @@
 import * as fs from 'fs'
 import {join, sep} from 'path'
 import urlJoin from 'proper-url-join'
+import encodeUrl from 'encodeurl'
 
 import {listToString} from './utils'
 
@@ -108,7 +109,7 @@ export function getCustomMp3Url(
   if (customBaseName.trim() === '') {
     throw new Error('Received an empty customBaseName')
   }
-  return urlJoin(baseUrl, `${customBaseName}.mp3`)
+  return encodeUrl(urlJoin(baseUrl, `${customBaseName}.mp3`))
 }
 
 export function getIncludes(directory: string) {

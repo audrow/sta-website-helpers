@@ -10631,7 +10631,7 @@ and I hope to see you next time
   ],
   "mp3": Object {
     "sizeBytes": 225870038,
-    "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 11 - CBQ.mp3",
+    "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA%20Ep%2011%20-%20CBQ.mp3",
   },
   "mp3SizeBytes": 225870038,
   "number": 11,
@@ -10696,7 +10696,7 @@ Object {
   },
   "mp3": Object {
     "sizeBytes": 9097894,
-    "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 0 - Welcome.mp3",
+    "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA%20Ep%200%20-%20Welcome.mp3",
   },
   "mp3SizeBytes": 9097894,
   "number": undefined,

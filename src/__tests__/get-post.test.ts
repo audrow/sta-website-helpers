@@ -4,11 +4,11 @@ import {
   getSlug,
   getMp3Url,
   getCustomMp3Url,
-  // getIncludes,
 } from '../get-post'
 
 import {join} from 'path'
 import podcast from './data/podcast.config'
+import encodeUrl from 'encodeurl'
 
 describe('getPost', () => {
   const dataDirectory = join(__dirname, 'data')
@@ -18,7 +18,9 @@ describe('getPost', () => {
     expect(post).toMatchSnapshot()
     expect(post.slug).toBe('11-cbq')
     expect(post.mp3.url).toBe(
-      'https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 11 - CBQ.mp3',
+      encodeUrl(
+        'https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 11 - CBQ.mp3',
+      ),
     )
     expect(post.number).toBe(11)
     expect(post.includes?.outlineTxt).toBeDefined()
@@ -31,7 +33,9 @@ describe('getPost', () => {
     expect(post).toMatchSnapshot()
     expect(post.slug).toBe('0-welcome')
     expect(post.mp3.url).toBe(
-      'https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 0 - Welcome.mp3',
+      encodeUrl(
+        'https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA Ep 0 - Welcome.mp3',
+      ),
     )
     expect(post.number).toBeUndefined()
     expect(post.includes?.outlineTxt).toBeUndefined()
@@ -68,16 +72,18 @@ describe('getMp3Url', () => {
   const baseUrl = 'https://example.com'
   it('should return the expected URL', () => {
     expect(getMp3Url(baseUrl, 1, 'John Doe')).toBe(
-      'https://example.com/STA Ep 1 - John Doe.mp3',
+      encodeUrl('https://example.com/STA Ep 1 - John Doe.mp3'),
     )
     expect(getMp3Url(baseUrl, 1, ['John Doe'])).toBe(
-      'https://example.com/STA Ep 1 - John Doe.mp3',
+      encodeUrl('https://example.com/STA Ep 1 - John Doe.mp3'),
     )
     expect(getMp3Url(baseUrl, 1, ['John Doe', 'Bob Smith'])).toBe(
-      'https://example.com/STA Ep 1 - John Doe and Bob Smith.mp3',
+      encodeUrl('https://example.com/STA Ep 1 - John Doe and Bob Smith.mp3'),
     )
     expect(getMp3Url(baseUrl, 1, ['John Doe', 'Bob Smith', 'Sara Wong'])).toBe(
-      'https://example.com/STA Ep 1 - John Doe, Bob Smith, and Sara Wong.mp3',
+      encodeUrl(
+        'https://example.com/STA Ep 1 - John Doe, Bob Smith, and Sara Wong.mp3',
+      ),
     )
     expect(
       getMp3Url(baseUrl, 1, [
@@ -87,7 +93,9 @@ describe('getMp3Url', () => {
         'Margaret Brown',
       ]),
     ).toBe(
-      'https://example.com/STA Ep 1 - John Doe, Bob Smith, Sara Wong, and Margaret Brown.mp3',
+      encodeUrl(
+        'https://example.com/STA Ep 1 - John Doe, Bob Smith, Sara Wong, and Margaret Brown.mp3',
+      ),
     )
   })
   it('should error when given an empty string', () => {
