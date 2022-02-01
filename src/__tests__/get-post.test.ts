@@ -15,7 +15,6 @@ describe('getPost', () => {
   it('should get a standard episode with a number', async () => {
     const episodeDir = join(dataDirectory, 'posts', '11')
     const post = await getPost(podcast, episodeDir)
-    expect(post).toMatchSnapshot()
     expect(post.slug).toBe('11-cbq')
     expect(post.mp3.url).toBe(
       encodeUrl(
@@ -30,7 +29,6 @@ describe('getPost', () => {
   it('should get an episode with a custom slug and mp3 URL', async () => {
     const episodeDir = join(dataDirectory, 'posts', 'welcome')
     const post = await getPost(podcast, episodeDir)
-    expect(post).toMatchSnapshot()
     expect(post.slug).toBe('0-welcome')
     expect(post.mp3.url).toBe(
       encodeUrl(

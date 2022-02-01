@@ -106,7 +106,6 @@ describe('PostLoader getPostBySlug', () => {
     await ph.init(dataDirectory)
     const post = ph.getPostBySlug('11-cbq')
     expect(post.slug).toBe('11-cbq')
-    expect(post).toMatchSnapshot()
   })
   it('gets a post with a custom slug by slug', async () => {
     const ph = new PostLoader(podcast, {
@@ -116,7 +115,6 @@ describe('PostLoader getPostBySlug', () => {
     await ph.init(dataDirectory)
     const post = ph.getPostBySlug('0-welcome')
     expect(post.slug).toBe('0-welcome')
-    expect(post).toMatchSnapshot()
   })
   it('throws an error when there is no matching slug', async () => {
     const ph = new PostLoader(podcast, {
