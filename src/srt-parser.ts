@@ -1,4 +1,10 @@
 import srtParser2 from 'srt-parser-2'
+import {toDuration} from './utils'
+
+import type Transcript from './__types__/Transcript'
+import type TranscriptEntry from './__types__/TranscriptEntry'
+import type Outline from './__types__/Outline'
+import type OutlineEntry from './__types__/OutlineEntry'
 
 const srtText = `1
 00:00:02,700 --> 00:00:04,860
@@ -193,6 +199,67 @@ system. It has many unique
 features. And.
 `
 
-const parser = new srtParser2()
-const srt = parser.fromSrt(srtText)
-console.log(srt)
+const outlineTxt = `0:00:00 - Start
+0:01:50 - Introducing Brett and SMACC
+0:18:58 - Events in State Machines
+0:21:01 - Clients and Client Behaviors
+0:23:30 - State reactors
+0:29:54 - Explaining dance bot + hierarchy in states
+0:35:14 - Recovery states
+0:38:07 - Origins of SMACC
+0:56:47 - SMACC and market pull
+1:05:31 - Robotics domains using SMACC
+1:08:03 - A problem to push the limits of SMACC
+1:12:50 - Making ROS packages smaller
+1:18:17 - SMACC for industry users
+1:22:23 - Making SMACC easy to use?
+1:27:42 - Control in many robotics applications
+1:31:16 - Comparing state machines to behavior trees
+1:44:40 - Future of SMACC
+1:47:01 - Advice for those starting out in robotics
+1:50:16 - Links and getting involved`
+
+export function getTranscript(srtText: string): Transcript {
+  const parser = new srtParser2()
+  const srt = parser
+    .fromSrt(srtText)
+    .map((s) => ({...s, text: s.text.replace(/\n/g, ' ')}))
+
+  const dialog: Transcript = []
+  for (const s of srt) {
+    const match = s.text.match(/((?:(?:[A-Z][a-z]+)\s?)+): (.+)$/)
+    if (match) {
+      const entry: TranscriptEntry = {
+        startTime: toDuration(s.startTime),
+        speaker: match[1],
+        text: match[2],
+      }
+      dialog.push(entry)
+    } else {
+      dialog.slice(-1)[0].text += ' ' + s.text
+    }
+  }
+  return dialog
+}
+
+export function getOutline(outlineTxt: string): Outline {
+  return outlineTxt
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l.length > 0)
+    .map((l) => {
+      const match = l.match(/^(\d+:\d{2}:\d{2}) - (.+)$/)
+      if (!match) {
+        throw new Error('Invalid outline line: ' + l)
+      }
+      const [, time, title] = match
+      const entry: OutlineEntry = {
+        startTime: toDuration(time),
+        title,
+      }
+      return entry
+    })
+}
+
+console.log(getTranscript(srtText))
+console.log(getOutline(outlineTxt))
