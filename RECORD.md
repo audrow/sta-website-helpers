@@ -2,6 +2,7 @@
 
 This will be a document where I record some thoughts on this project.
 
+- [2022-02-02: Get Outline and Transcript Data Structures](#2022-02-02-get-outline-and-transcript-data-structures)
 - [2022-01-30: Add tag support](#2022-01-30-add-tag-support)
 - [2022-01-29: Add PostLoader class](#2022-01-29-add-postloader-class)
 - [2022-01-28: Refactor to Get Posts](#2022-01-28-refactor-to-get-posts)
@@ -9,6 +10,17 @@ This will be a document where I record some thoughts on this project.
 - [2022-01-26: Updating How Episodes are Obtained](#2022-01-26-updating-how-episodes-are-obtained)
 - [2022-01-25: Use Episode Numbers Rather than Slugs](#2022-01-25-use-episode-numbers-rather-than-slugs)
 - [2022-01-22: Storing Large Files](#2022-01-22-storing-large-files)
+
+## 2022-02-02: Get Outline and Transcript Data Structures
+
+Today, I added functions to get the transcript and outline as objects that will make them more convenient to work with.
+
+The next step is to test these functions and then use them in the get-post's method.
+From there, I should move the content maker out of this project, expose the relevant functions and types in the index file, and make another release.
+Before doing so, I should rename the project to be more consistent with what the code here actually does: it makes the post data accessible and memoizes it for performance.
+
+Once this is done, I can begin working on making the actual site with NextJS - that will be exciting.
+I will do the content generation there.
 
 ## 2022-01-30: Add tag support
 
