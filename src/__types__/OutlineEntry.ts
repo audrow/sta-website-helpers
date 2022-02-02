@@ -1,7 +1,7 @@
 import Duration from './Duration'
 
 type OutlineEntry = {
-  startTime: Duration
+  timeStamp: Duration
   title: string
 }
 
