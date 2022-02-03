@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getTranscript should return the correct outline 1`] = `
+Array [
+  Object {
+    "speaker": "Audrow Nash",
+    "text": "This is a conversation with Brett Aldrich who is the CEO of a Robosoft AI. Robosoft AI develops and maintains SMAC, which is a library that aims to make it easier for roboticists to control robot behavior. One of the key ideas in SMAC is that a finite state machines, we'll be referring to finite state machines a lot in this interview, so I'll explain what they are. Before we start. Imagine that you have a lawn mowing robot. Imagine that that robot is powered off, and that you turn it on by pushing a button, it boots up and drives to a field to mow. When it gets to the field, it starts mowing. Once it finishes mowing, it drives home and powers off. This robot has states like powered off, booting up driving, and mowing. The robot also has transitions that occur on events, such as when the robot is turned on by you pressing the power button, or the robot arrives at the grass to mow these transitions change the robot from one state to another. For example, the event of arriving at the field to mow could transition the robot from the state of driving to mowing. So summarizing, a finite state machine is something made up of states like driving, and mowing, and transitions when the robot has reached the destination, or when it has finished mowing. This is the sense think act Podcast. I'm Audrow Nash. Thank you to our founding sponsor open robotics. And now here's my conversation with Brett Aldrich. Would you introduce yourself?",
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 0,
+      "seconds": 2,
+    },
+  },
+  Object {
+    "speaker": "Brett Aldrich",
+    "text": "My name is Brett Aldrich, and I'm the author of Smak. State Machine library for robotic applications written in C Plus Plus, I'm also the founder of robust soft AI. Robot soft. We're the keepers of the smack tool chain. We're also the creators of the smack to runtime analyzer. A graphical application lets you visualize your state machines both statically and at runtime.",
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 1,
+      "seconds": 52,
+    },
+  },
+  Object {
+    "speaker": "Audrow Nash",
+    "text": "Hmm. And what so can you start at a high level and explain what SMAC is, and then what its motivation is? Sure.",
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 2,
+      "seconds": 13,
+    },
+  },
+  Object {
+    "speaker": "Brett Aldrich",
+    "text": "SMACC is a state machine library for robotic applications. I'd like to describe it as dealing with the highest level of task planning and management on a robotic system. It has many unique features. And.",
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 2,
+      "seconds": 22,
+    },
+  },
+]
+`;

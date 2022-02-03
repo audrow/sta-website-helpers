@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getOutline should return the correct outline 1`] = `
+Array [
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 0,
+      "seconds": 0,
+    },
+    "title": "Start",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 1,
+      "seconds": 50,
+    },
+    "title": "Introducing Brett and SMACC",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 18,
+      "seconds": 58,
+    },
+    "title": "Events in State Machines",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 21,
+      "seconds": 1,
+    },
+    "title": "Clients and Client Behaviors",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 23,
+      "seconds": 30,
+    },
+    "title": "State reactors",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 29,
+      "seconds": 54,
+    },
+    "title": "Explaining dance bot + hierarchy in states",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 35,
+      "seconds": 14,
+    },
+    "title": "Recovery states",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 38,
+      "seconds": 7,
+    },
+    "title": "Origins of SMACC",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 0,
+      "minutes": 56,
+      "seconds": 47,
+    },
+    "title": "SMACC and market pull",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 5,
+      "seconds": 31,
+    },
+    "title": "Robotics domains using SMACC",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 8,
+      "seconds": 3,
+    },
+    "title": "A problem to push the limits of SMACC",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 12,
+      "seconds": 50,
+    },
+    "title": "Making ROS packages smaller",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 18,
+      "seconds": 17,
+    },
+    "title": "SMACC for industry users",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 22,
+      "seconds": 23,
+    },
+    "title": "Making SMACC easy to use?",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 27,
+      "seconds": 42,
+    },
+    "title": "Control in many robotics applications",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 31,
+      "seconds": 16,
+    },
+    "title": "Comparing state machines to behavior trees",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 44,
+      "seconds": 40,
+    },
+    "title": "Future of SMACC",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 47,
+      "seconds": 1,
+    },
+    "title": "Advice for those starting out in robotics",
+  },
+  Object {
+    "timeStamp": Object {
+      "hours": 1,
+      "minutes": 50,
+      "seconds": 16,
+    },
+    "title": "Links and getting involved",
+  },
+]
+`;
