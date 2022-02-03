@@ -22,8 +22,13 @@ describe('getPost', () => {
       ),
     )
     expect(post.number).toBe(11)
-    expect(post.includes?.outlineTxt).toBeDefined()
-    expect(post.includes?.transcriptSrt).toBeDefined()
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const {includes, publishDate, ...remainingPostKeys} = post
+    expect(remainingPostKeys).toMatchSnapshot()
+
+    expect(post.includes?.outline).toBeDefined()
+    expect(post.includes?.transcript).toBeDefined()
     expect(post.includes?.coverArtPath).toBeDefined()
   })
   it('should get an episode with a custom slug and mp3 URL', async () => {
@@ -36,8 +41,13 @@ describe('getPost', () => {
       ),
     )
     expect(post.number).toBeUndefined()
-    expect(post.includes?.outlineTxt).toBeUndefined()
-    expect(post.includes?.transcriptSrt).toBeUndefined()
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const {includes, publishDate, ...remainingPostKeys} = post
+    expect(remainingPostKeys).toMatchSnapshot()
+
+    expect(post.includes?.outline).toBeUndefined()
+    expect(post.includes?.transcript).toBeUndefined()
     expect(post.includes?.coverArtPath).toBeUndefined()
   })
   it('should throw an error on no number or custom slug', async () => {
