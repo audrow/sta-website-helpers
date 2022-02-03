@@ -6,12 +6,12 @@ import type Post from './__types__/Post'
 import {join} from 'path'
 import fs from 'fs'
 
-type PodcastHelperConfig = {
+type PostLoaderConfig = {
   isNewestPostFirst: boolean
   isDebug: boolean
 }
 
-const defaultConfig: PodcastHelperConfig = {
+const defaultConfig: PostLoaderConfig = {
   isNewestPostFirst: true,
   isDebug: false,
 }
@@ -20,13 +20,10 @@ export class PostLoader {
   private podcast: PodcastConfig
   private posts: Post[]
   private tagToPostMap: {[tag: string]: string[]}
-  private config: PodcastHelperConfig
+  private config: PostLoaderConfig
   private isInitialized: boolean
 
-  constructor(
-    podcast: PodcastConfig,
-    config: Partial<PodcastHelperConfig> = {},
-  ) {
+  constructor(podcast: PodcastConfig, config: Partial<PostLoaderConfig> = {}) {
     this.podcast = podcast
     this.posts = []
     this.tagToPostMap = {}
