@@ -1,7 +1,7 @@
 {
-  "name": "@sta-podcast/website-helpers",
-  "version": "0.0.6",
-  "description": "A collection of tools useful for making the Sense Think Act Podcast website.",
+  "name": "@sta-podcast/post-loader",
+  "version": "1.0.0",
+  "description": "A way of loading posts and inferring information from a static directory.",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -32,19 +32,17 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/audrow/sta-website-helpers"
+    "url": "https://github.com/audrow/sta-website-post-loader"
   },
   "keywords": [
     "podcast",
-    "rss",
-    "yaml",
     "typescript",
     "nodejs"
   ],
-  "homepage": "https://github.com/audrow/sta-website-helpers",
+  "homepage": "https://github.com/audrow/sta-website-post-loader",
   "bugs": {
     "mail": "audrow@hey.com",
-    "url": "https://github.com/audrow/sta-website-helpers/issues"
+    "url": "https://github.com/audrow/sta-website-post-loader/issues"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
@@ -65,11 +63,8 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "decko": "^1.2.0",
     "encodeurl": "^1.0.2",
-    "podcast": "^2.0.0",
     "proper-url-join": "^2.1.1",
-    "srt-parser-2": "^1.1.7",
-    "yaml": "^1.10.2"
+    "srt-parser-2": "^1.1.7"
   }
 }
