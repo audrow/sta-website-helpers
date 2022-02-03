@@ -8,6 +8,8 @@ import {listToString} from './utils'
 import type PostYamlData from './__types__/PostYamlData'
 import type Post from './__types__/Post'
 import type PodcastConfig from './__types__/PodcastConfig'
+import type Transcript from './__types__/Transcript'
+import type Outline from './__types__/Outline'
 
 import {
   INFO_TS_FILE_NAME,
@@ -16,6 +18,9 @@ import {
   COVER_ART_FILE_NAME,
 } from './constants'
 import PostIncludes from './__types__/PostIncludes'
+
+import getTranscript from './get-transcript'
+import getOutline from './get-outline'
 
 export default getPost
 
@@ -116,7 +121,11 @@ export function getCustomMp3Url(
   return encodeurl(urlJoin(baseUrl, `${customBaseName}.mp3`))
 }
 
-export function getIncludes(directory: string) {
+export function getIncludes(
+  directory: string,
+  getTranscriptFn: (srtText: string) => Transcript = getTranscript,
+  getOutlineFn: (outlineTxt: string) => Outline = getOutline,
+) {
   function tryOrUndefined<T>(fn: () => T): T | undefined {
     try {
       return fn()
@@ -130,11 +139,11 @@ export function getIncludes(directory: string) {
   const coverArtPath = join(directory, COVER_ART_FILE_NAME)
 
   const includes: Partial<PostIncludes> = {
-    transcriptSrt: tryOrUndefined<string>(() =>
-      fs.readFileSync(transcriptPath, 'utf8'),
+    transcript: tryOrUndefined<Transcript>(() =>
+      getTranscriptFn(fs.readFileSync(transcriptPath, 'utf8')),
     ),
-    outlineTxt: tryOrUndefined<string>(() =>
-      fs.readFileSync(outlinePath, 'utf8'),
+    outline: tryOrUndefined<Outline>(() =>
+      getOutlineFn(fs.readFileSync(outlinePath, 'utf8')),
     ),
     coverArtPath: fs.existsSync(coverArtPath) ? coverArtPath : undefined,
   }

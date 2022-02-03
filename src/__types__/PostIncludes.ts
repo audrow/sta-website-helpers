@@ -1,6 +1,9 @@
+import type Transcript from './Transcript'
+import type Outline from './Outline'
+
 type PostIncludes = {
-  transcriptSrt: string
-  outlineTxt: string
+  transcript: Transcript
+  outline: Outline
   coverArtPath: string
 }
 
