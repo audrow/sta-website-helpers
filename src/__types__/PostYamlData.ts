@@ -15,7 +15,7 @@ type PostYamlData = {
   customMp3FileName?: string
   mp3SizeBytes: number
   youtube: {
-    mainContent: YoutubeVideo
+    mainContentId: string
     clips?: YoutubeVideo[]
   }
 }

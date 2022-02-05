@@ -1,6 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
 
-const title = 'State Machines for Complex Robot Behavior'
 const description = `
 In this episode, Audrow Nash interviews Brett Aldrich, author of SMACC and CEO of Robosoft AI.
 Robosoft AI develops and maintains SMACC and SMACC2, which are event-driven, behavior state machine libraries for ROS 1 and ROS 2, respectively.
@@ -11,7 +10,7 @@ Brett explains SMACC, its origins, other strategies for robot control such as be
 
 const post: PostYamlData = {
   guests: 'Brett Aldrich',
-  title,
+  title: 'State Machines for Complex Robot Behavior',
   description,
   excerpt: 'Bret Aldrich is the author of SMACC and the CEO of Robosoft AI.',
   duration: {
@@ -41,10 +40,7 @@ const post: PostYamlData = {
   mp3SizeBytes: 216263919,
   publishDate: new Date(2021, 11, 28),
   youtube: {
-    mainContent: {
-      baseTitle: title,
-      videoId: '3ju1g6g51ss',
-    },
+    mainContentId: '3ju1g6g51ss',
   },
 }
 

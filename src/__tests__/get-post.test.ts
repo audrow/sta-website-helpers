@@ -9,12 +9,14 @@ import {
 import {join} from 'path'
 import podcast from './data/podcast.config'
 import encodeUrl from 'encodeurl'
+import readTsPost from '../read-post/read-ts'
+// import readYamlPost from '../read-post/read-yaml'
 
 describe('getPost', () => {
   const dataDirectory = join(__dirname, 'data')
   it('should get a standard episode with a number', async () => {
     const episodeDir = join(dataDirectory, 'posts', '11')
-    const post = await getPost(podcast, episodeDir)
+    const post = await getPost(podcast, episodeDir, readTsPost)
     expect(post.slug).toBe('11-cbq')
     expect(post.mp3.url).toBe(
       encodeUrl(
@@ -33,7 +35,7 @@ describe('getPost', () => {
   })
   it('should get an episode with a custom slug and mp3 URL', async () => {
     const episodeDir = join(dataDirectory, 'posts', 'welcome')
-    const post = await getPost(podcast, episodeDir)
+    const post = await getPost(podcast, episodeDir, readTsPost)
     expect(post.slug).toBe('0-welcome')
     expect(post.mp3.url).toBe(
       encodeUrl(
@@ -56,7 +58,7 @@ describe('getPost', () => {
       'bad-posts',
       'no-number-or-custom-slug',
     )
-    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+    expect(getPost(podcast, episodeDir, readTsPost)).rejects.toThrowError()
   })
   it('should throw an error on no number or custom mp3 url', async () => {
     const episodeDir = join(
@@ -64,15 +66,15 @@ describe('getPost', () => {
       'bad-posts',
       'no-number-or-custom-url',
     )
-    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+    expect(getPost(podcast, episodeDir, readTsPost)).rejects.toThrowError()
   })
   it('should throw when given an empty folder', async () => {
     const episodeDir = join(dataDirectory, 'bad-posts', 'empty-dir')
-    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+    expect(getPost(podcast, episodeDir, readTsPost)).rejects.toThrowError()
   })
   it('should throw when given a non-existent folder', async () => {
     const episodeDir = 'does-not-exist'
-    expect(getPost(podcast, episodeDir)).rejects.toThrowError()
+    expect(getPost(podcast, episodeDir, readTsPost)).rejects.toThrowError()
   })
 })
 

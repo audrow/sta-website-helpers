@@ -1,6 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
 
-const title = 'Commercial-grade Autonomous Mowers, Safety, and Dogfooding'
 const description = `
 In this episode, Audrow Nash speaks to Charles Brian Quinn (aka, CBQ), CEO and a Co-Founder of Greenzie.
 Greenzie make an autonomous driving system for commercial lawn mowers.
@@ -11,7 +10,7 @@ We talk about Greenzie's autonomous mowing system, how Greenzie has worked with 
 
 const post: PostYamlData = {
   guests: 'CBQ',
-  title,
+  title: 'Commercial-grade Autonomous Mowers, Safety, and Dogfooding',
   description,
   excerpt: 'CBQ is the CEO and a Co-Founder of Greenzie.',
   duration: {
@@ -45,10 +44,7 @@ const post: PostYamlData = {
   mp3SizeBytes: 225870038,
   publishDate: new Date(2022, 0, 11),
   youtube: {
-    mainContent: {
-      baseTitle: title,
-      videoId: 'pBWLSmoBj54',
-    },
+    mainContentId: 'pBWLSmoBj54',
     clips: [
       {
         baseTitle: 'Does it Detect Sprinkler Heads?',

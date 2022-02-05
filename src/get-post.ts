@@ -5,14 +5,14 @@ import encodeurl from 'encodeurl'
 
 import {listToString} from './utils'
 
-import type PostYamlData from './__types__/PostYamlData'
 import type Post from './__types__/Post'
 import type PodcastConfig from './__types__/PodcastConfig'
 import type Transcript from './__types__/Transcript'
 import type Outline from './__types__/Outline'
+import type ReadPostFileFn from './__types__/ReadPostFn'
+import type PostYamlData from './__types__/PostYamlData'
 
 import {
-  INFO_TS_FILE_NAME,
   TRANSCRIPT_FILE_NAME,
   OUTLINE_FILE_NAME,
   COVER_ART_FILE_NAME,
@@ -27,9 +27,16 @@ export default getPost
 export async function getPost(
   podcast: PodcastConfig,
   directory: string,
+  readPostFn: ReadPostFileFn,
 ): Promise<Post> {
-  const infoFilePath = join(directory, INFO_TS_FILE_NAME)
-  const info = (await import(infoFilePath)).default as PostYamlData
+  let info: PostYamlData
+  try {
+    info = await readPostFn(directory)
+  } catch (err) {
+    throw new Error(
+      `Error reading post at ${directory}: ${(err as Error).message}`,
+    )
+  }
 
   const number = getNumber(directory)
   if (!number || !info.guests) {

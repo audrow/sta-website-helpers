@@ -1,0 +1,15 @@
+title: This Post Is Always in the Future
+description: Some great future news
+excerpt: Some great future news
+duration:
+  hours: 0
+  minutes: 4
+  seconds: 39
+customSlug: 99-future-post
+customMp3FileName: Future Post
+mp3SizeBytes: 99999
+tags:
+  - announcement
+publishDate: 2099-01-01
+youtube:
+  mainContentId: futurepost

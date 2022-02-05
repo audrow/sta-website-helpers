@@ -1,12 +1,9 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
 
-const title = 'This Post Is Always in the Future'
 const description = 'Some Great Future News'
-const publishDate = new Date()
-publishDate.setDate(publishDate.getDate() + 1)
 
 const post: PostYamlData = {
-  title,
+  title: 'This Post Is Always in the Future',
   description,
   excerpt: description,
   duration: {
@@ -18,12 +15,9 @@ const post: PostYamlData = {
   customMp3FileName: 'Future Post',
   mp3SizeBytes: 99999,
   tags: ['announcement'],
-  publishDate,
+  publishDate: new Date(2099, 0, 1),
   youtube: {
-    mainContent: {
-      baseTitle: title,
-      videoId: '7PdIbR8lNGI',
-    },
+    mainContentId: 'futurepost',
   },
 }
 export default post

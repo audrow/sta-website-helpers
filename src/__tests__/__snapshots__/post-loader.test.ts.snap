@@ -24,10 +24,7 @@ Object {
   "title": "Welcome to Sense Think Act",
   "url": "https://sensethinkact.com/episodes/0-welcome",
   "youtube": Object {
-    "mainContent": Object {
-      "baseTitle": "Welcome to Sense Think Act",
-      "videoId": "7PdIbR8lNGI",
-    },
+    "mainContentId": "welcome",
   },
 }
 `;
@@ -97,10 +94,7 @@ Object {
         "videoId": "HrraVxtyxok",
       },
     ],
-    "mainContent": Object {
-      "baseTitle": "Commercial-grade Autonomous Mowers, Safety, and Dogfooding",
-      "videoId": "pBWLSmoBj54",
-    },
+    "mainContentId": "pBWLSmoBj54",
   },
 }
 `;

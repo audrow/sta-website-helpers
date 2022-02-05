@@ -17,10 +17,7 @@ const post: PostYamlData = {
   tags: ['announcement'],
   publishDate: new Date(2021, 8, 24),
   youtube: {
-    mainContent: {
-      baseTitle: title,
-      videoId: '7PdIbR8lNGI',
-    },
+    mainContentId: '7PdIbR8lNGI',
   },
 }
 export default post

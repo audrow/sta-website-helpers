@@ -1,6 +1,8 @@
 import PostLoader from '../post-loader'
 import {join} from 'path'
 import podcast from './data/podcast.config'
+import getPost from '../get-post'
+import readTsPost from '../read-post/read-ts'
 
 describe('PostLoader init', () => {
   {
@@ -10,7 +12,7 @@ describe('PostLoader init', () => {
         isDebug: true,
         isNewestPostFirst: true,
       })
-      await ph.init(dataDirectory)
+      await ph.init(dataDirectory, getPost, readTsPost)
 
       expect(ph.getPosts().length).toBe(4)
       const slugs = ph.getSlugs()
@@ -28,7 +30,7 @@ describe('PostLoader init', () => {
         isDebug: true,
         isNewestPostFirst: false,
       })
-      await ph.init(dataDirectory)
+      await ph.init(dataDirectory, getPost, readTsPost)
 
       expect(ph.getPosts().length).toBe(4)
       const slugs = ph.getSlugs()
@@ -46,7 +48,7 @@ describe('PostLoader init', () => {
         isDebug: false,
         isNewestPostFirst: true,
       })
-      await ph.init(dataDirectory)
+      await ph.init(dataDirectory, getPost, readTsPost)
 
       expect(ph.getPosts().length).toBe(3)
       const slugs = ph.getSlugs()
@@ -59,7 +61,7 @@ describe('PostLoader init', () => {
         isDebug: false,
         isNewestPostFirst: true,
       })
-      await ph.init(dataDirectory)
+      await ph.init(dataDirectory, getPost, readTsPost)
 
       expect(ph.getTags()).toMatchSnapshot()
       const slugs = ph.getSlugsByTag('startup')
@@ -77,7 +79,7 @@ describe('PostLoader init', () => {
       expect(() => ph.getSlugs()).toThrowError()
       expect(() => ph.getPosts()).toThrowError()
       expect(() => ph.getPostBySlug('0-welcome')).toThrowError()
-      await ph.init(dataDirectory)
+      await ph.init(dataDirectory, getPost, readTsPost)
       expect(() => ph.getSlugs()).not.toThrowError()
       expect(() => ph.getPosts()).not.toThrowError()
       expect(() => ph.getPostBySlug('0-welcome')).not.toThrowError()
@@ -91,7 +93,7 @@ describe('PostLoader init', () => {
         isDebug: true,
         isNewestPostFirst: true,
       })
-      expect(ph.init(dataDirectory)).rejects.toThrowError()
+      expect(ph.init(dataDirectory, getPost, readTsPost)).rejects.toThrowError()
     })
   }
 })
@@ -103,7 +105,7 @@ describe('PostLoader getPostBySlug', () => {
       isDebug: false,
       isNewestPostFirst: true,
     })
-    await ph.init(dataDirectory)
+    await ph.init(dataDirectory, getPost, readTsPost)
     const post = ph.getPostBySlug('11-cbq')
     expect(post.slug).toBe('11-cbq')
 
@@ -116,7 +118,7 @@ describe('PostLoader getPostBySlug', () => {
       isDebug: false,
       isNewestPostFirst: true,
     })
-    await ph.init(dataDirectory)
+    await ph.init(dataDirectory, getPost, readTsPost)
     const post = ph.getPostBySlug('0-welcome')
     expect(post.slug).toBe('0-welcome')
 
@@ -129,7 +131,7 @@ describe('PostLoader getPostBySlug', () => {
       isDebug: false,
       isNewestPostFirst: true,
     })
-    await ph.init(dataDirectory)
+    await ph.init(dataDirectory, getPost, readTsPost)
     expect(() => ph.getPostBySlug('not-a-slug')).toThrowError()
   })
 })

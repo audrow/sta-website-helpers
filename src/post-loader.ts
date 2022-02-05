@@ -1,7 +1,7 @@
-import getPost from './get-post'
-
 import type PodcastConfig from './__types__/PodcastConfig'
 import type Post from './__types__/Post'
+import type ReadPostFileFn from './__types__/ReadPostFn'
+import type GetPostFn from './__types__/GetPostFn'
 
 import {join} from 'path'
 import fs from 'fs'
@@ -31,13 +31,21 @@ export class PostLoader {
     this.isInitialized = false
   }
 
-  async init(postsDirectory: string) {
+  async init(
+    postsDirectory: string,
+    getPostFn: GetPostFn,
+    readPostFileFn: ReadPostFileFn,
+  ) {
     const postsDirectories = fs.readdirSync(postsDirectory)
 
     const posts: Post[] = []
     for await (const postDirectory of postsDirectories) {
       const postDirectoryPath = join(postsDirectory, postDirectory)
-      const post = await getPost(this.podcast, postDirectoryPath)
+      const post = await getPostFn(
+        this.podcast,
+        postDirectoryPath,
+        readPostFileFn,
+      )
       if (this.config.isDebug || post.publishDate.getTime() < Date.now()) {
         this.recordTags(post.tags, post.slug)
         posts.push(post)

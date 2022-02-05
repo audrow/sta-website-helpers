@@ -42,10 +42,7 @@ const post: PostYamlData = {
   mp3SizeBytes: 216263919,
   publishDate: new Date(2021, 12, 28),
   youtube: {
-    mainContent: {
-      baseTitle: title,
-      videoId: '3ju1g6g51ss',
-    },
+    mainContentId: '3ju1g6g51ss',
   },
 }
 
