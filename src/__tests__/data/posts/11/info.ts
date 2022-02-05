@@ -1,4 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
+import dayjs from 'dayjs'
 
 const description = `
 In this episode, Audrow Nash speaks to Charles Brian Quinn (aka, CBQ), CEO and a Co-Founder of Greenzie.
@@ -42,7 +43,7 @@ const post: PostYamlData = {
     },
   ],
   mp3SizeBytes: 225870038,
-  publishDate: new Date(2022, 0, 11),
+  publishDate: dayjs('2022-01-11'),
   youtube: {
     mainContentId: 'pBWLSmoBj54',
     clips: [

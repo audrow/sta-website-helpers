@@ -1,4 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
+import dayjs from 'dayjs'
 
 const description = 'Some Great Future News'
 
@@ -15,7 +16,7 @@ const post: PostYamlData = {
   customMp3FileName: 'Future Post',
   mp3SizeBytes: 99999,
   tags: ['announcement'],
-  publishDate: new Date(2099, 0, 1),
+  publishDate: dayjs('2099-01-01'),
   youtube: {
     mainContentId: 'futurepost',
   },

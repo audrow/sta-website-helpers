@@ -6,6 +6,7 @@ import type PostLoaderConfig from './__types__/PostLoaderConfig'
 
 import {join} from 'path'
 import fs from 'fs'
+import dayjs from 'dayjs'
 
 const defaultConfig: PostLoaderConfig = {
   isNewestPostFirst: true,
@@ -42,7 +43,7 @@ export class PostLoader {
         postDirectoryPath,
         readPostFileFn,
       )
-      if (this.config.isDebug || post.publishDate.getTime() < Date.now()) {
+      if (this.config.isDebug || post.publishDate < dayjs()) {
         this.recordTags(post.tags, post.slug)
         posts.push(post)
       }

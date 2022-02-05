@@ -1,4 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
+import dayjs from 'dayjs'
 
 const description = 'Audrow Nash introduces the Sense Think Act Podcast.'
 
@@ -15,7 +16,7 @@ const post: PostYamlData = {
   customMp3FileName: 'STA Ep 0 - Welcome',
   mp3SizeBytes: 9097894,
   tags: ['announcement'],
-  publishDate: new Date(2021, 8, 24),
+  publishDate: dayjs('2021-8-24'),
   youtube: {
     mainContentId: 'welcome',
   },

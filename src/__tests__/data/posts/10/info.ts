@@ -1,4 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
+import dayjs from 'dayjs'
 
 const description = `
 In this episode, Audrow Nash interviews Brett Aldrich, author of SMACC and CEO of Robosoft AI.
@@ -38,7 +39,7 @@ const post: PostYamlData = {
     },
   ],
   mp3SizeBytes: 216263919,
-  publishDate: new Date(2021, 11, 28),
+  publishDate: dayjs('2021-12-28'),
   youtube: {
     mainContentId: '3ju1g6g51ss',
   },

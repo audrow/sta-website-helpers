@@ -1,4 +1,5 @@
 import PostYamlData from '../../../../__types__/PostYamlData'
+import dayjs from 'dayjs'
 
 const title = 'State Machines for Complex Robot Behavior'
 const description = `
@@ -40,7 +41,7 @@ const post: PostYamlData = {
     },
   ],
   mp3SizeBytes: 216263919,
-  publishDate: new Date(2021, 12, 28),
+  publishDate: dayjs('2021-12-28'),
   youtube: {
     mainContentId: '3ju1g6g51ss',
   },
