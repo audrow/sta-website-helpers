@@ -101,16 +101,16 @@ Object {
 
 exports[`PostLoader init creates a tag list 1`] = `
 Array [
-  "startup",
-  "software",
-  "behavior trees",
-  "state machines",
-  "control",
-  "sensor fusion",
+  "announcement",
   "autonomous driving",
+  "behavior trees",
+  "control",
+  "dogfooding",
   "mowers",
   "safety",
-  "dogfooding",
-  "announcement",
+  "sensor fusion",
+  "software",
+  "startup",
+  "state machines",
 ]
 `;

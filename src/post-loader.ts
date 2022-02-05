@@ -92,7 +92,7 @@ export class PostLoader {
 
   getTags() {
     this.throwIfNotInitialized()
-    return Object.keys(this.tagToPostMap)
+    return Object.keys(this.tagToPostMap).sort()
   }
 
   getSlugs() {
