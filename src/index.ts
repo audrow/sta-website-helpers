@@ -1,5 +1,6 @@
 import type PostFileData from './__types__/PostFileData'
 import type Post from './__types__/Post'
+import type SerializedPost from './__types__/SerializedPost'
 import type Link from './__types__/Link'
 import type PodcastConfig from './__types__/PodcastConfig'
 import type PostLoaderConfig from './__types__/PostLoaderConfig'
@@ -12,6 +13,7 @@ import getPost from './get-post'
 export type {
   PostFileData as PostYamlData,
   Post,
+  SerializedPost,
   Link,
   PodcastConfig,
   PostLoaderConfig,
