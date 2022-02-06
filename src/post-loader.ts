@@ -3,6 +3,7 @@ import type Post from './__types__/Post'
 import type ReadPostFileFn from './__types__/ReadPostFn'
 import type GetPostFn from './__types__/GetPostFn'
 import type PostLoaderConfig from './__types__/PostLoaderConfig'
+import type SerializedPost from './__types__/SerializedPost'
 
 import {join} from 'path'
 import fs from 'fs'
@@ -11,6 +12,7 @@ import dayjs from 'dayjs'
 const defaultConfig: PostLoaderConfig = {
   isNewestPostFirst: true,
   isDebug: false,
+  isSerialized: true,
 }
 
 export class PostLoader {
@@ -110,6 +112,11 @@ export class PostLoader {
   }
 
   getPostBySlug(slug: string) {
+    const post = this.getUnserializedPostBySlug(slug)
+    return this.config.isSerialized ? this.serializePost(post) : post
+  }
+
+  private getUnserializedPostBySlug(slug: string) {
     this.throwIfNotInitialized()
     const post = this.posts.find((post) => post.slug === slug)
     if (!post) {
@@ -124,9 +131,21 @@ export class PostLoader {
     if (slugs.length === 0) {
       return this.posts
     } else {
-      const posts = slugs.map((s) => this.getPostBySlug(s))
+      const posts = slugs.map((s) => this.getUnserializedPostBySlug(s))
       this.sortPostsByPublishDate(posts)
-      return posts
+      return this.config.isSerialized ? this.serializePosts(posts) : posts
+    }
+  }
+
+  private serializePosts(posts: Post[]): SerializedPost[] {
+    return posts.map((post) => this.serializePost(post))
+  }
+
+  private serializePost(post: Post): SerializedPost {
+    const {publishDate, ...postFields} = post
+    return {
+      publishDate: publishDate.format('YYYY-MM-DD'),
+      ...postFields,
     }
   }
 }
