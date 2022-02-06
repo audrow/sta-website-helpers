@@ -8,6 +8,7 @@ import type SerializedPost from './__types__/SerializedPost'
 import {join} from 'path'
 import fs from 'fs'
 import dayjs from 'dayjs'
+import podcastConfig from './__tests__/data/podcast.config'
 
 const defaultConfig: PostLoaderConfig = {
   isNewestPostFirst: true,
@@ -19,7 +20,7 @@ export class PostLoader {
   private podcast: PodcastConfig
   private posts: Post[]
   private tagToPostMap: {[tag: string]: string[]}
-  private config: PostLoaderConfig
+  config: PostLoaderConfig
   private isInitialized: boolean
 
   constructor(podcast: PodcastConfig, config: Partial<PostLoaderConfig> = {}) {
@@ -128,13 +129,14 @@ export class PostLoader {
   getPosts(slugs: string[] = []) {
     this.throwIfNotInitialized()
 
+    let posts: Post[]
     if (slugs.length === 0) {
-      return this.posts
+      posts = this.posts
     } else {
-      const posts = slugs.map((s) => this.getUnserializedPostBySlug(s))
+      posts = slugs.map((s) => this.getUnserializedPostBySlug(s))
       this.sortPostsByPublishDate(posts)
-      return this.config.isSerialized ? this.serializePosts(posts) : posts
     }
+    return this.config.isSerialized ? this.serializePosts(posts) : posts
   }
 
   private serializePosts(posts: Post[]): SerializedPost[] {
@@ -144,10 +146,24 @@ export class PostLoader {
   private serializePost(post: Post): SerializedPost {
     const {publishDate, ...postFields} = post
     return {
-      publishDate: publishDate.format('YYYY-MM-DD'),
       ...postFields,
+      publishDate: publishDate.format('YYYY-MM-DD'),
     }
   }
 }
 
 export default PostLoader
+
+import getPost from './get-post'
+import readYamlFile from './read-post/read-yaml'
+
+async function main() {
+  const dir = join(__dirname, '__tests__', 'data', 'posts')
+  const postLoader = new PostLoader(podcastConfig, {isSerialized: true})
+  await postLoader.init(dir, getPost, readYamlFile)
+  const posts = postLoader.getPosts()
+  console.log(posts)
+}
+if (require.main === module) {
+  main()
+}

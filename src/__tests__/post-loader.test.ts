@@ -3,6 +3,7 @@ import {join} from 'path'
 import podcast from './data/podcast.config'
 import getPost from '../get-post'
 import readTsPost from '../read-post/read-ts'
+import dayjs, {Dayjs} from 'dayjs'
 
 describe('PostLoader init', () => {
   {
@@ -11,6 +12,7 @@ describe('PostLoader init', () => {
       const ph = new PostLoader(podcast, {
         isDebug: true,
         isNewestPostFirst: true,
+        isSerialized: true,
       })
       await ph.init(dataDirectory, getPost, readTsPost)
 
@@ -29,6 +31,7 @@ describe('PostLoader init', () => {
       const ph = new PostLoader(podcast, {
         isDebug: true,
         isNewestPostFirst: false,
+        isSerialized: true,
       })
       await ph.init(dataDirectory, getPost, readTsPost)
 
@@ -47,6 +50,7 @@ describe('PostLoader init', () => {
       const ph = new PostLoader(podcast, {
         isDebug: false,
         isNewestPostFirst: true,
+        isSerialized: true,
       })
       await ph.init(dataDirectory, getPost, readTsPost)
 
@@ -60,6 +64,7 @@ describe('PostLoader init', () => {
       const ph = new PostLoader(podcast, {
         isDebug: false,
         isNewestPostFirst: true,
+        isSerialized: true,
       })
       await ph.init(dataDirectory, getPost, readTsPost)
 
@@ -75,6 +80,7 @@ describe('PostLoader init', () => {
       const ph = new PostLoader(podcast, {
         isDebug: true,
         isNewestPostFirst: true,
+        isSerialized: true,
       })
       expect(() => ph.getSlugs()).toThrowError()
       expect(() => ph.getPosts()).toThrowError()
@@ -84,6 +90,34 @@ describe('PostLoader init', () => {
       expect(() => ph.getPosts()).not.toThrowError()
       expect(() => ph.getPostBySlug('0-welcome')).not.toThrowError()
     })
+
+    it('serializes the date', async () => {
+      const phSerial = new PostLoader(podcast, {
+        isDebug: false,
+        isNewestPostFirst: true,
+        isSerialized: true,
+      })
+      await phSerial.init(dataDirectory, getPost, readTsPost)
+      const serialDates = phSerial.getPosts().map((p) => {
+        expect(typeof p.publishDate === 'string').toBeTruthy()
+        expect(() => dayjs(p.publishDate)).not.toThrowError()
+        return p.publishDate as string
+      })
+
+      const phNotSerial = new PostLoader(podcast, {
+        isDebug: false,
+        isNewestPostFirst: true,
+        isSerialized: false,
+      })
+      await phNotSerial.init(dataDirectory, getPost, readTsPost)
+      const notSerialDates = phNotSerial
+        .getPosts()
+        .map((p) => p.publishDate as Dayjs)
+
+      expect(serialDates).toEqual(
+        notSerialDates.map((d) => d.format('YYYY-MM-DD')),
+      )
+    })
   }
 
   {
@@ -92,6 +126,7 @@ describe('PostLoader init', () => {
       const ph = new PostLoader(podcast, {
         isDebug: true,
         isNewestPostFirst: true,
+        isSerialized: true,
       })
       expect(ph.init(dataDirectory, getPost, readTsPost)).rejects.toThrowError()
     })
@@ -104,6 +139,7 @@ describe('PostLoader getPostBySlug', () => {
     const ph = new PostLoader(podcast, {
       isDebug: false,
       isNewestPostFirst: true,
+      isSerialized: true,
     })
     await ph.init(dataDirectory, getPost, readTsPost)
     const post = ph.getPostBySlug('11-cbq')
@@ -117,6 +153,7 @@ describe('PostLoader getPostBySlug', () => {
     const ph = new PostLoader(podcast, {
       isDebug: false,
       isNewestPostFirst: true,
+      isSerialized: true,
     })
     await ph.init(dataDirectory, getPost, readTsPost)
     const post = ph.getPostBySlug('0-welcome')
@@ -130,6 +167,7 @@ describe('PostLoader getPostBySlug', () => {
     const ph = new PostLoader(podcast, {
       isDebug: false,
       isNewestPostFirst: true,
+      isSerialized: true,
     })
     await ph.init(dataDirectory, getPost, readTsPost)
     expect(() => ph.getPostBySlug('not-a-slug')).toThrowError()
