@@ -1,4 +1,4 @@
-import PostYamlData from '../../../../__types__/PostYamlData'
+import PostFileData from '../../../../__types__/PostFileData'
 import dayjs from 'dayjs'
 
 const description = `
@@ -9,7 +9,7 @@ Brett explains SMACC, its origins, other strategies for robot control such as be
   .replace(/\n/g, ' ')
   .trim()
 
-const post: PostYamlData = {
+const post: PostFileData = {
   guests: 'Brett Aldrich',
   title: 'State Machines for Complex Robot Behavior',
   description,

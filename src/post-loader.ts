@@ -34,6 +34,9 @@ export class PostLoader {
     readPostFileFn: ReadPostFileFn,
   ) {
     const postsDirectories = fs.readdirSync(postsDirectory)
+    if (postsDirectories.length === 0) {
+      throw new Error(`No posts found in ${postsDirectory}`)
+    }
 
     const posts: Post[] = []
     for await (const postDirectory of postsDirectories) {

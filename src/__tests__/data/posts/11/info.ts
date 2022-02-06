@@ -1,4 +1,4 @@
-import PostYamlData from '../../../../__types__/PostYamlData'
+import PostFileData from '../../../../__types__/PostFileData'
 import dayjs from 'dayjs'
 
 const description = `
@@ -9,7 +9,7 @@ We talk about Greenzie's autonomous mowing system, how Greenzie has worked with 
   .replace(/\n/g, ' ')
   .trim()
 
-const post: PostYamlData = {
+const post: PostFileData = {
   guests: 'CBQ',
   title: 'Commercial-grade Autonomous Mowers, Safety, and Dogfooding',
   description,

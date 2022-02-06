@@ -10,7 +10,7 @@ import type PodcastConfig from './__types__/PodcastConfig'
 import type Transcript from './__types__/Transcript'
 import type Outline from './__types__/Outline'
 import type ReadPostFileFn from './__types__/ReadPostFn'
-import type PostYamlData from './__types__/PostYamlData'
+import type PostFileData from './__types__/PostFileData'
 
 import {
   TRANSCRIPT_FILE_NAME,
@@ -29,7 +29,7 @@ export async function getPost(
   directory: string,
   readPostFn: ReadPostFileFn,
 ): Promise<Post> {
-  let info: PostYamlData
+  let info: PostFileData
   try {
     info = await readPostFn(directory)
   } catch (err) {

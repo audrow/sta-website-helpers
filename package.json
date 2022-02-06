@@ -48,6 +48,7 @@
     "@tsconfig/node16": "^1.0.2",
     "@types/encodeurl": "^1.0.0",
     "@types/jest": "^27.4.0",
+    "@types/js-yaml": "^4.0.5",
     "@types/proper-url-join": "^2.1.1",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
@@ -65,8 +66,8 @@
   "dependencies": {
     "dayjs": "^1.10.7",
     "encodeurl": "^1.0.2",
+    "js-yaml": "^4.1.0",
     "proper-url-join": "^2.1.1",
-    "srt-parser-2": "^1.1.7",
-    "yaml": "^1.10.2"
+    "srt-parser-2": "^1.1.7"
   }
 }

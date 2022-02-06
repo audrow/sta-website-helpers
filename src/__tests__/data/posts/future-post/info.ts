@@ -1,9 +1,9 @@
-import PostYamlData from '../../../../__types__/PostYamlData'
+import PostFileData from '../../../../__types__/PostFileData'
 import dayjs from 'dayjs'
 
 const description = 'Some Great Future News'
 
-const post: PostYamlData = {
+const post: PostFileData = {
   title: 'This Post Is Always in the Future',
   description,
   excerpt: description,

@@ -1,9 +1,9 @@
-import PostYamlData from '../../../../__types__/PostYamlData'
+import PostFileData from '../../../../__types__/PostFileData'
 import dayjs from 'dayjs'
 
 const description = 'Audrow Nash introduces the Sense Think Act Podcast.'
 
-const post: PostYamlData = {
+const post: PostFileData = {
   title: 'Welcome to Sense Think Act',
   description,
   excerpt: description,

@@ -3,7 +3,7 @@ import Duration from './Duration'
 import YoutubeVideo from './YoutubeVideo'
 import type {Dayjs} from 'dayjs'
 
-type PostYamlData = {
+type PostFileData = {
   guests?: string | string[]
   title: string
   description: string
@@ -21,4 +21,4 @@ type PostYamlData = {
   }
 }
 
-export default PostYamlData
+export default PostFileData
