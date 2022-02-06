@@ -16,7 +16,6 @@ Object {
     "url": "https://ftp.osuosl.org/pub/ros/download.ros.org/sensethinkact/episodes/STA%20Ep%200%20-%20Welcome.mp3",
   },
   "mp3SizeBytes": 9097894,
-  "number": undefined,
   "slug": "0-welcome",
   "tags": Array [
     "announcement",

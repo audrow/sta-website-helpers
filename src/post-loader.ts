@@ -146,7 +146,7 @@ export class PostLoader {
   private serializePost(post: Post): SerializedPost {
     const {publishDate, ...postFields} = post
     return {
-      ...postFields,
+      ...JSON.parse(JSON.stringify(postFields)),
       publishDate: publishDate.format('YYYY-MM-DD'),
     }
   }
@@ -163,6 +163,8 @@ async function main() {
   await postLoader.init(dir, getPost, readYamlFile)
   const posts = postLoader.getPosts()
   console.log(posts)
+  const json = JSON.parse(JSON.stringify(posts))
+  console.log(json)
 }
 if (require.main === module) {
   main()
