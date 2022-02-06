@@ -1,3 +1,4 @@
+import type Duration from './__types__/Duration'
 import type PostFileData from './__types__/PostFileData'
 import type Post from './__types__/Post'
 import type SerializedPost from './__types__/SerializedPost'
@@ -11,6 +12,7 @@ import readYamlPost from './read-post/read-yaml'
 import getPost from './get-post'
 
 export type {
+  Duration,
   PostFileData as PostYamlData,
   Post,
   SerializedPost,
