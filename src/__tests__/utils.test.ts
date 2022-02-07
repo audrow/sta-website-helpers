@@ -1,8 +1,8 @@
 import {
   listToString,
-  sortDuration,
-  toDuration,
-  toDurationString,
+  sortTimestamps,
+  toTimestamp,
+  toTimestampString,
 } from '../utils'
 
 describe('listToString', () => {
@@ -30,8 +30,8 @@ describe('listToString', () => {
   })
 })
 
-describe('sortDuration', () => {
-  it('should compare durations correctly', () => {
+describe('sortTimestamps', () => {
+  it('should compare timestamps correctly', () => {
     const d1 = {hours: 0, minutes: 0, seconds: 0}
     const d2 = {hours: 0, minutes: 0, seconds: 1}
     const d3 = {hours: 0, minutes: 1, seconds: 0}
@@ -40,89 +40,89 @@ describe('sortDuration', () => {
     const d6 = {hours: 1, minutes: 0, seconds: 1}
     const d7 = {hours: 1, minutes: 1, seconds: 0}
 
-    expect(sortDuration(d1, d1)).toBe(0)
-    expect(sortDuration(d1, d2)).toBe(-1)
-    expect(sortDuration(d1, d3)).toBe(-1)
-    expect(sortDuration(d1, d4)).toBe(-1)
-    expect(sortDuration(d1, d5)).toBe(-1)
-    expect(sortDuration(d1, d6)).toBe(-1)
-    expect(sortDuration(d1, d7)).toBe(-1)
+    expect(sortTimestamps(d1, d1)).toBe(0)
+    expect(sortTimestamps(d1, d2)).toBe(-1)
+    expect(sortTimestamps(d1, d3)).toBe(-1)
+    expect(sortTimestamps(d1, d4)).toBe(-1)
+    expect(sortTimestamps(d1, d5)).toBe(-1)
+    expect(sortTimestamps(d1, d6)).toBe(-1)
+    expect(sortTimestamps(d1, d7)).toBe(-1)
 
-    expect(sortDuration(d2, d1)).toBe(1)
-    expect(sortDuration(d2, d2)).toBe(0)
-    expect(sortDuration(d2, d3)).toBe(-1)
-    expect(sortDuration(d2, d4)).toBe(-1)
-    expect(sortDuration(d2, d5)).toBe(-1)
-    expect(sortDuration(d2, d6)).toBe(-1)
-    expect(sortDuration(d2, d7)).toBe(-1)
+    expect(sortTimestamps(d2, d1)).toBe(1)
+    expect(sortTimestamps(d2, d2)).toBe(0)
+    expect(sortTimestamps(d2, d3)).toBe(-1)
+    expect(sortTimestamps(d2, d4)).toBe(-1)
+    expect(sortTimestamps(d2, d5)).toBe(-1)
+    expect(sortTimestamps(d2, d6)).toBe(-1)
+    expect(sortTimestamps(d2, d7)).toBe(-1)
 
-    expect(sortDuration(d3, d1)).toBe(1)
-    expect(sortDuration(d3, d2)).toBe(1)
-    expect(sortDuration(d3, d3)).toBe(0)
-    expect(sortDuration(d3, d4)).toBe(-1)
-    expect(sortDuration(d3, d5)).toBe(-1)
-    expect(sortDuration(d3, d6)).toBe(-1)
-    expect(sortDuration(d3, d7)).toBe(-1)
+    expect(sortTimestamps(d3, d1)).toBe(1)
+    expect(sortTimestamps(d3, d2)).toBe(1)
+    expect(sortTimestamps(d3, d3)).toBe(0)
+    expect(sortTimestamps(d3, d4)).toBe(-1)
+    expect(sortTimestamps(d3, d5)).toBe(-1)
+    expect(sortTimestamps(d3, d6)).toBe(-1)
+    expect(sortTimestamps(d3, d7)).toBe(-1)
 
-    expect(sortDuration(d4, d1)).toBe(1)
-    expect(sortDuration(d4, d2)).toBe(1)
-    expect(sortDuration(d4, d3)).toBe(1)
-    expect(sortDuration(d4, d4)).toBe(0)
-    expect(sortDuration(d4, d5)).toBe(-1)
-    expect(sortDuration(d4, d6)).toBe(-1)
-    expect(sortDuration(d4, d7)).toBe(-1)
+    expect(sortTimestamps(d4, d1)).toBe(1)
+    expect(sortTimestamps(d4, d2)).toBe(1)
+    expect(sortTimestamps(d4, d3)).toBe(1)
+    expect(sortTimestamps(d4, d4)).toBe(0)
+    expect(sortTimestamps(d4, d5)).toBe(-1)
+    expect(sortTimestamps(d4, d6)).toBe(-1)
+    expect(sortTimestamps(d4, d7)).toBe(-1)
 
-    expect(sortDuration(d5, d1)).toBe(1)
-    expect(sortDuration(d5, d2)).toBe(1)
-    expect(sortDuration(d5, d3)).toBe(1)
-    expect(sortDuration(d5, d4)).toBe(1)
-    expect(sortDuration(d5, d5)).toBe(0)
-    expect(sortDuration(d5, d6)).toBe(-1)
-    expect(sortDuration(d5, d7)).toBe(-1)
+    expect(sortTimestamps(d5, d1)).toBe(1)
+    expect(sortTimestamps(d5, d2)).toBe(1)
+    expect(sortTimestamps(d5, d3)).toBe(1)
+    expect(sortTimestamps(d5, d4)).toBe(1)
+    expect(sortTimestamps(d5, d5)).toBe(0)
+    expect(sortTimestamps(d5, d6)).toBe(-1)
+    expect(sortTimestamps(d5, d7)).toBe(-1)
 
-    expect(sortDuration(d6, d1)).toBe(1)
-    expect(sortDuration(d6, d2)).toBe(1)
-    expect(sortDuration(d6, d3)).toBe(1)
-    expect(sortDuration(d6, d4)).toBe(1)
-    expect(sortDuration(d6, d5)).toBe(1)
-    expect(sortDuration(d6, d6)).toBe(0)
-    expect(sortDuration(d6, d7)).toBe(-1)
+    expect(sortTimestamps(d6, d1)).toBe(1)
+    expect(sortTimestamps(d6, d2)).toBe(1)
+    expect(sortTimestamps(d6, d3)).toBe(1)
+    expect(sortTimestamps(d6, d4)).toBe(1)
+    expect(sortTimestamps(d6, d5)).toBe(1)
+    expect(sortTimestamps(d6, d6)).toBe(0)
+    expect(sortTimestamps(d6, d7)).toBe(-1)
 
-    expect(sortDuration(d7, d1)).toBe(1)
-    expect(sortDuration(d7, d2)).toBe(1)
-    expect(sortDuration(d7, d3)).toBe(1)
-    expect(sortDuration(d7, d4)).toBe(1)
-    expect(sortDuration(d7, d5)).toBe(1)
-    expect(sortDuration(d7, d6)).toBe(1)
-    expect(sortDuration(d7, d7)).toBe(0)
+    expect(sortTimestamps(d7, d1)).toBe(1)
+    expect(sortTimestamps(d7, d2)).toBe(1)
+    expect(sortTimestamps(d7, d3)).toBe(1)
+    expect(sortTimestamps(d7, d4)).toBe(1)
+    expect(sortTimestamps(d7, d5)).toBe(1)
+    expect(sortTimestamps(d7, d6)).toBe(1)
+    expect(sortTimestamps(d7, d7)).toBe(0)
   })
 })
 
-describe('toDuration', () => {
-  it('should convert a string to a duration', () => {
-    expect(toDuration('0:00:00')).toEqual({hours: 0, minutes: 0, seconds: 0})
-    expect(toDuration('0:00:01')).toEqual({hours: 0, minutes: 0, seconds: 1})
-    expect(toDuration('0:01:00')).toEqual({hours: 0, minutes: 1, seconds: 0})
-    expect(toDuration('1:00:00')).toEqual({hours: 1, minutes: 0, seconds: 0})
-    expect(toDuration('1:01:01')).toEqual({hours: 1, minutes: 1, seconds: 1})
+describe('toTimestamp', () => {
+  it('should convert a string to a timestamp', () => {
+    expect(toTimestamp('0:00:00')).toEqual({hours: 0, minutes: 0, seconds: 0})
+    expect(toTimestamp('0:00:01')).toEqual({hours: 0, minutes: 0, seconds: 1})
+    expect(toTimestamp('0:01:00')).toEqual({hours: 0, minutes: 1, seconds: 0})
+    expect(toTimestamp('1:00:00')).toEqual({hours: 1, minutes: 0, seconds: 0})
+    expect(toTimestamp('1:01:01')).toEqual({hours: 1, minutes: 1, seconds: 1})
   })
   it('should ignore milliseconds', () => {
-    expect(toDuration('0:00:00.000')).toEqual({
+    expect(toTimestamp('0:00:00.000')).toEqual({
       hours: 0,
       minutes: 0,
       seconds: 0,
     })
-    expect(toDuration('0:00:00,000')).toEqual({
+    expect(toTimestamp('0:00:00,000')).toEqual({
       hours: 0,
       minutes: 0,
       seconds: 0,
     })
-    expect(toDuration('0:00:00.001')).toEqual({
+    expect(toTimestamp('0:00:00.001')).toEqual({
       hours: 0,
       minutes: 0,
       seconds: 0,
     })
-    expect(toDuration('0:00:00,001')).toEqual({
+    expect(toTimestamp('0:00:00,001')).toEqual({
       hours: 0,
       minutes: 0,
       seconds: 0,
@@ -144,17 +144,27 @@ describe('toDuration', () => {
       '   ',
     ]
     for (const badString of badStrings) {
-      expect(() => toDuration(badString)).toThrowError()
+      expect(() => toTimestamp(badString)).toThrowError()
     }
   })
 })
 
-describe('toDurationString', () => {
+describe('toTimestampString', () => {
   it('should convert durations to strings', () => {
-    expect(toDurationString({hours: 0, minutes: 0, seconds: 0})).toBe('0:00:00')
-    expect(toDurationString({hours: 0, minutes: 0, seconds: 1})).toBe('0:00:01')
-    expect(toDurationString({hours: 0, minutes: 1, seconds: 0})).toBe('0:01:00')
-    expect(toDurationString({hours: 1, minutes: 0, seconds: 0})).toBe('1:00:00')
-    expect(toDurationString({hours: 1, minutes: 1, seconds: 1})).toBe('1:01:01')
+    expect(toTimestampString({hours: 0, minutes: 0, seconds: 0})).toBe(
+      '0:00:00',
+    )
+    expect(toTimestampString({hours: 0, minutes: 0, seconds: 1})).toBe(
+      '0:00:01',
+    )
+    expect(toTimestampString({hours: 0, minutes: 1, seconds: 0})).toBe(
+      '0:01:00',
+    )
+    expect(toTimestampString({hours: 1, minutes: 0, seconds: 0})).toBe(
+      '1:00:00',
+    )
+    expect(toTimestampString({hours: 1, minutes: 1, seconds: 1})).toBe(
+      '1:01:01',
+    )
   })
 })

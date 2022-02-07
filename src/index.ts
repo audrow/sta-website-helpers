@@ -1,4 +1,4 @@
-import type Duration from './__types__/Duration'
+import type Timestamp from './__types__/Timestamp'
 import type PostFileData from './__types__/PostFileData'
 import type Post from './__types__/Post'
 import type SerializedPost from './__types__/SerializedPost'
@@ -7,12 +7,12 @@ import type PodcastConfig from './__types__/PodcastConfig'
 import type PostLoaderConfig from './__types__/PostLoaderConfig'
 
 import PostLoader from './post-loader'
-import {toDuration, toDurationString, sortDuration} from './utils'
+import {toTimestamp, toTimestampString, sortTimestamps} from './utils'
 import readYamlPost from './read-post/read-yaml'
 import getPost from './get-post'
 
 export type {
-  Duration,
+  Timestamp as Duration,
   PostFileData as PostYamlData,
   Post,
   SerializedPost,
@@ -23,9 +23,9 @@ export type {
 
 export {
   PostLoader,
-  toDuration,
-  toDurationString,
-  sortDuration,
+  toTimestamp as toDuration,
+  toTimestampString as toDurationString,
+  sortTimestamps as sortDuration,
   getPost,
   readYamlPost,
   createPostLoader,

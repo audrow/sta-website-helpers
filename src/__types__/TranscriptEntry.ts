@@ -1,7 +1,7 @@
-import Duration from './Duration'
+import Timestamp from './Timestamp'
 
 type TranscriptEntry = {
-  timeStamp: Duration
+  timeStamp: Timestamp
   speaker: string
   text: string
 }

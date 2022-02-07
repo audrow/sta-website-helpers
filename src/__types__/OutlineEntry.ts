@@ -1,7 +1,7 @@
-import Duration from './Duration'
+import Timestamp from './Timestamp'
 
 type OutlineEntry = {
-  timeStamp: Duration
+  timeStamp: Timestamp
   title: string
 }
 

@@ -1,4 +1,4 @@
-import type Duration from './__types__/Duration'
+import type Timestamp from './__types__/Timestamp'
 
 export function listToString(items: string[], and = 'and') {
   if (items.length === 0) {
@@ -21,7 +21,7 @@ export function listToString(items: string[], and = 'and') {
   }
 }
 
-export function toDuration(s: string): Duration {
+export function toTimestamp(s: string): Timestamp {
   const match = s.match(/^(\d+):(\d{2}):(\d{2})(?:[,|.]\d+)?$/)
   if (!match) {
     throw new Error(`"${s}" is not a valid duration`)
@@ -37,13 +37,13 @@ export function toDuration(s: string): Duration {
   return duration
 }
 
-export function toDurationString(duration: Duration): string {
+export function toTimestampString(duration: Timestamp): string {
   return `${duration.hours}:${duration.minutes
     .toString()
     .padStart(2, '0')}:${duration.seconds.toString().padStart(2, '0')}`
 }
 
-export function sortDuration(a: Duration, b: Duration) {
+export function sortTimestamps(a: Timestamp, b: Timestamp) {
   if (a.hours > b.hours) {
     return 1
   } else if (a.hours < b.hours) {

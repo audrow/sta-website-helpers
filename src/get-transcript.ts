@@ -1,5 +1,5 @@
 import srtParser2 from 'srt-parser-2'
-import {toDuration} from './utils'
+import {toTimestamp} from './utils'
 
 import type Transcript from './__types__/Transcript'
 import type TranscriptEntry from './__types__/TranscriptEntry'
@@ -15,7 +15,7 @@ function getTranscript(srtText: string): Transcript {
     const match = s.text.match(/((?:(?:[A-Z][a-z]+)\s?)+): (.+)$/)
     if (match) {
       const entry: TranscriptEntry = {
-        timeStamp: toDuration(s.startTime),
+        timeStamp: toTimestamp(s.startTime),
         speaker: match[1],
         text: match[2],
       }

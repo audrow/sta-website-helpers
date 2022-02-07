@@ -1,5 +1,5 @@
 import Link from './Link'
-import Duration from './Duration'
+import Timestamp from './Timestamp'
 import YoutubeVideo from './YoutubeVideo'
 import type {Dayjs} from 'dayjs'
 
@@ -11,7 +11,7 @@ type PostFileData = {
   publishDate: Dayjs
   tags: string[]
   links?: Link[]
-  duration: Duration
+  duration: Timestamp
   customSlug?: string
   customMp3FileName?: string
   mp3SizeBytes: number

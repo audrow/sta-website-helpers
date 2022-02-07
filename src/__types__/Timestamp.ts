@@ -1,7 +1,7 @@
-type Duration = {
+type Timestamp = {
   hours: number
   minutes: number
   seconds: number
 }
 
-export default Duration
+export default Timestamp

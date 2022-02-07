@@ -1,4 +1,4 @@
-import {toDuration} from './utils'
+import {toTimestamp} from './utils'
 
 import type Outline from './__types__/Outline'
 import type OutlineEntry from './__types__/OutlineEntry'
@@ -15,7 +15,7 @@ function getOutline(outlineTxt: string): Outline {
       }
       const [, time, title] = match
       const entry: OutlineEntry = {
-        timeStamp: toDuration(time),
+        timeStamp: toTimestamp(time),
         title,
       }
       return entry
