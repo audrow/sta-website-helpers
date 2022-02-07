@@ -22,7 +22,7 @@
     "validate": "npm run format && npm-run-all --parallel lint check-format test build"
   },
   "files": [
-    "dist/*"
+    "dist"
   ],
   "author": "Audrow Nash",
   "contributors": [
