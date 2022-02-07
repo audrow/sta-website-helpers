@@ -1,4 +1,4 @@
-import {toTimestamp} from './utils'
+import {toTimestamp} from '@sta-podcast/timestamp-tools'
 
 import type {Outline, OutlineEntry} from '@sta-podcast/types'
 

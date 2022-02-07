@@ -1,5 +1,5 @@
 import srtParser2 from 'srt-parser-2'
-import {toTimestamp} from './utils'
+import {toTimestamp} from '@sta-podcast/timestamp-tools'
 
 import type {Transcript, TranscriptEntry} from '@sta-podcast/types'
 

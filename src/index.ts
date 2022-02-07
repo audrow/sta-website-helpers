@@ -3,22 +3,13 @@ import type GetPostFn from './__types__/GetPostFn'
 import type ReadPostFileFn from './__types__/ReadPostFileFn'
 
 import PostLoader from './post-loader'
-import {toTimestamp, toTimestampString, sortTimestamps} from './utils'
 import readYamlPost from './read-post/read-yaml'
 import getPost from './get-post'
 import type {PodcastConfig} from '@sta-podcast/types'
 
 export type {PostLoaderConfig, GetPostFn, ReadPostFileFn}
 
-export {
-  PostLoader,
-  toTimestamp,
-  toTimestampString,
-  sortTimestamps,
-  getPost,
-  readYamlPost,
-  createPostLoader,
-}
+export {PostLoader, getPost, readYamlPost, createPostLoader}
 
 async function createPostLoader(
   postsDirectory: string,
