@@ -1,5 +1,5 @@
 type YoutubeVideo = {
-  baseTitle: string
+  title: string
   videoId: string
 }
 

@@ -73,23 +73,23 @@ Object {
   "youtube": Object {
     "clips": Array [
       Object {
-        "baseTitle": "Does it Detect Sprinkler Heads?",
+        "title": "Does it Detect Sprinkler Heads?",
         "videoId": "ahUd_2Uydps",
       },
       Object {
-        "baseTitle": "Making Perfect Turns",
+        "title": "Making Perfect Turns",
         "videoId": "odAvY-ojVAA",
       },
       Object {
-        "baseTitle": "Seasonal Workers",
+        "title": "Seasonal Workers",
         "videoId": "6CfAz0z07I4",
       },
       Object {
-        "baseTitle": "Leap of Faith",
+        "title": "Leap of Faith",
         "videoId": "8oVBa43dQGw",
       },
       Object {
-        "baseTitle": "Differences Between Kids and Poles",
+        "title": "Differences Between Kids and Poles",
         "videoId": "HrraVxtyxok",
       },
     ],

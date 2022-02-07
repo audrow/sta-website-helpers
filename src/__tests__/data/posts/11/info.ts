@@ -48,23 +48,23 @@ const post: PostFileData = {
     mainContentId: 'pBWLSmoBj54',
     clips: [
       {
-        baseTitle: 'Does it Detect Sprinkler Heads?',
+        title: 'Does it Detect Sprinkler Heads?',
         videoId: 'ahUd_2Uydps',
       },
       {
-        baseTitle: 'Making Perfect Turns',
+        title: 'Making Perfect Turns',
         videoId: 'odAvY-ojVAA',
       },
       {
-        baseTitle: 'Seasonal Workers',
+        title: 'Seasonal Workers',
         videoId: '6CfAz0z07I4',
       },
       {
-        baseTitle: 'Leap of Faith',
+        title: 'Leap of Faith',
         videoId: '8oVBa43dQGw',
       },
       {
-        baseTitle: 'Differences Between Kids and Poles',
+        title: 'Differences Between Kids and Poles',
         videoId: 'HrraVxtyxok',
       },
     ],
