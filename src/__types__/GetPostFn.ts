@@ -1,6 +1,6 @@
-import PodcastConfig from './PodcastConfig'
-import ReadPostFileFn from './ReadPostFn'
-import Post from './Post'
+import ReadPostFileFn from './ReadPostFileFn'
+
+import type {PodcastConfig, Post} from '@sta-podcast/types'
 
 type GetPostFn = (
   podcast: PodcastConfig,

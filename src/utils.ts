@@ -1,4 +1,4 @@
-import type Timestamp from './__types__/Timestamp'
+import type {Timestamp} from '@sta-podcast/types'
 
 export function listToString(items: string[], and = 'and') {
   if (items.length === 0) {

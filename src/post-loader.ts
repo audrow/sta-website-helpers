@@ -1,9 +1,8 @@
-import type PodcastConfig from './__types__/PodcastConfig'
-import type Post from './__types__/Post'
-import type ReadPostFileFn from './__types__/ReadPostFn'
+import type ReadPostFileFn from './__types__/ReadPostFileFn'
 import type GetPostFn from './__types__/GetPostFn'
 import type PostLoaderConfig from './__types__/PostLoaderConfig'
-import type SerializedPost from './__types__/SerializedPost'
+
+import type {PodcastConfig, Post, SerializedPost} from '@sta-podcast/types'
 
 import {join} from 'path'
 import fs from 'fs'

@@ -1,5 +1,5 @@
 import {join} from 'path'
-import type PodcastConfig from '../../__types__/PodcastConfig'
+import type {PodcastConfig} from '@sta-podcast/types'
 
 const siteUrl = 'https://sensethinkact.com/'
 const feedFile = 'itunes.xml'

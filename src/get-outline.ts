@@ -1,7 +1,6 @@
 import {toTimestamp} from './utils'
 
-import type Outline from './__types__/Outline'
-import type OutlineEntry from './__types__/OutlineEntry'
+import type {Outline, OutlineEntry} from '@sta-podcast/types'
 
 function getOutline(outlineTxt: string): Outline {
   return outlineTxt

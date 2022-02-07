@@ -1,4 +1,4 @@
-import PostFileData from '../../../../__types__/PostFileData'
+import {PostFileData} from '@sta-podcast/types'
 import dayjs from 'dayjs'
 
 const description = 'Audrow Nash introduces the Sense Think Act Podcast.'

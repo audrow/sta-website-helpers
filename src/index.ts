@@ -1,31 +1,20 @@
-import type Timestamp from './__types__/Timestamp'
-import type PostFileData from './__types__/PostFileData'
-import type Post from './__types__/Post'
-import type SerializedPost from './__types__/SerializedPost'
-import type Link from './__types__/Link'
-import type PodcastConfig from './__types__/PodcastConfig'
 import type PostLoaderConfig from './__types__/PostLoaderConfig'
+import type GetPostFn from './__types__/GetPostFn'
+import type ReadPostFileFn from './__types__/ReadPostFileFn'
 
 import PostLoader from './post-loader'
 import {toTimestamp, toTimestampString, sortTimestamps} from './utils'
 import readYamlPost from './read-post/read-yaml'
 import getPost from './get-post'
+import type {PodcastConfig} from '@sta-podcast/types'
 
-export type {
-  Timestamp as Duration,
-  PostFileData as PostYamlData,
-  Post,
-  SerializedPost,
-  Link,
-  PodcastConfig,
-  PostLoaderConfig,
-}
+export type {PostLoaderConfig, GetPostFn, ReadPostFileFn}
 
 export {
   PostLoader,
-  toTimestamp as toDuration,
-  toTimestampString as toDurationString,
-  sortTimestamps as sortDuration,
+  toTimestamp,
+  toTimestampString,
+  sortTimestamps,
   getPost,
   readYamlPost,
   createPostLoader,

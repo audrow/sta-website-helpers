@@ -1,4 +1,4 @@
-import PostFileData from '../../../../__types__/PostFileData'
+import type {PostFileData} from '@sta-podcast/types'
 import dayjs from 'dayjs'
 
 const title = 'State Machines for Complex Robot Behavior'

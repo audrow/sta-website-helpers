@@ -1,4 +1,4 @@
-import type PostFileData from '../__types__/PostFileData'
+import type {PostFileData} from '@sta-podcast/types'
 import {join} from 'path'
 
 import {INFO_TS_FILE_NAME} from '../constants'

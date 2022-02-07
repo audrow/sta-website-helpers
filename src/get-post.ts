@@ -5,19 +5,21 @@ import encodeurl from 'encodeurl'
 
 import {listToString} from './utils'
 
-import type Post from './__types__/Post'
-import type PodcastConfig from './__types__/PodcastConfig'
-import type Transcript from './__types__/Transcript'
-import type Outline from './__types__/Outline'
-import type ReadPostFileFn from './__types__/ReadPostFn'
-import type PostFileData from './__types__/PostFileData'
-
 import {
   TRANSCRIPT_FILE_NAME,
   OUTLINE_FILE_NAME,
   COVER_ART_FILE_NAME,
 } from './constants'
-import PostIncludes from './__types__/PostIncludes'
+
+import type {
+  Post,
+  PodcastConfig,
+  Transcript,
+  Outline,
+  PostFileData,
+  PostIncludes,
+} from '@sta-podcast/types'
+import type ReadPostFileFn from './__types__/ReadPostFileFn'
 
 import getTranscript from './get-transcript'
 import getOutline from './get-outline'

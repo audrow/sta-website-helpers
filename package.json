@@ -44,6 +44,7 @@
     "url": "https://github.com/audrow/sta-website-post-loader/issues"
   },
   "devDependencies": {
+    "@sta-podcast/types": "^1.0.5",
     "@tsconfig/node16": "^1.0.2",
     "@types/encodeurl": "^1.0.0",
     "@types/jest": "^27.4.0",

@@ -1,8 +1,7 @@
 import srtParser2 from 'srt-parser-2'
 import {toTimestamp} from './utils'
 
-import type Transcript from './__types__/Transcript'
-import type TranscriptEntry from './__types__/TranscriptEntry'
+import type {Transcript, TranscriptEntry} from '@sta-podcast/types'
 
 function getTranscript(srtText: string): Transcript {
   const parser = new srtParser2()
