@@ -1,6 +1,6 @@
 {
   "name": "@sta-podcast/post-loader",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A way of loading posts and inferring information from a static directory.",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
