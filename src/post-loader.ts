@@ -161,9 +161,7 @@ async function main() {
   const postLoader = new PostLoader(podcastConfig, {isSerialized: true})
   await postLoader.init(dir, getPost, readYamlFile)
   const posts = postLoader.getPosts()
-  console.log(posts)
-  const json = JSON.parse(JSON.stringify(posts))
-  console.log(json)
+  console.log(posts[0].description)
 }
 if (require.main === module) {
   main()

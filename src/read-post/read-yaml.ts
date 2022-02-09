@@ -10,7 +10,16 @@ async function readYamlPost(directory: string): Promise<PostFileData> {
   const infoFilePath = join(directory, INFO_YAML_FILE_NAME)
   const file = fs.readFileSync(infoFilePath, 'utf8')
   const info = yaml.load(file, {schema: yaml.CORE_SCHEMA}) as PostFileData
+
+  // load the date as a dayjs date
   info.publishDate = dayjs(info.publishDate)
+
+  // wrap the description so sentences are on the same line, but preserve paragraphs
+  info.description = info.description
+    .trim()
+    .split('\n\n')
+    .map((paragraph) => paragraph.replace(/\n/g, ' '))
+    .join('\n')
   return info
 }
 

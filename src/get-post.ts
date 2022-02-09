@@ -70,14 +70,6 @@ export async function getPost(
   // try to get the includes
   const includes = getIncludes(directory)
 
-  // wrap the description text but keep paragraphs
-  info.description = info.description
-    .split('\n\n')
-    .map((paragraph) => {
-      paragraph.replace(/\n/g, ' ')
-    })
-    .join('\n')
-
   return {
     slug,
     url: postUrl,
