@@ -4,7 +4,7 @@ exports[`PostLoader getPostBySlug gets a post with a custom slug by slug 1`] = `
 Object {
   "customMp3FileName": "STA Ep 0 - Welcome",
   "customSlug": "0-welcome",
-  "description": "Audrow Nash introduces the Sense Think Act Podcast.",
+  "description": "",
   "duration": Object {
     "hours": 0,
     "minutes": 4,
@@ -30,7 +30,7 @@ Object {
 
 exports[`PostLoader getPostBySlug gets a post with a number by slug 1`] = `
 Object {
-  "description": "In this episode, Audrow Nash speaks to Charles Brian Quinn (aka, CBQ), CEO and a Co-Founder of Greenzie. Greenzie make an autonomous driving system for commercial lawn mowers. We talk about Greenzie's autonomous mowing system, how Greenzie has worked with manufacturers to up-fit their system into comercial mowers, how Greenzie does dog-fooding, safety and standards, and about CBQ's experiences bootstrapping and with venture capital.",
+  "description": "",
   "duration": Object {
     "hours": 1,
     "minutes": 51,

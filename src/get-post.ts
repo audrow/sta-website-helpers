@@ -58,6 +58,7 @@ export async function getPost(
   const slug = info.customSlug || getSlug(number!, info.guests!)
 
   // get the post's url
+  // TODO make episodes part of podcast config
   const postUrl = urlJoin(podcast.siteUrl, 'episodes', slug)
 
   // get Mp3 URL
@@ -68,6 +69,14 @@ export async function getPost(
 
   // try to get the includes
   const includes = getIncludes(directory)
+
+  // wrap the description text but keep paragraphs
+  info.description = info.description
+    .split('\n\n')
+    .map((paragraph) => {
+      paragraph.replace(/\n/g, ' ')
+    })
+    .join('\n')
 
   return {
     slug,
